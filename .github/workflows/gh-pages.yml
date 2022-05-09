@@ -9,6 +9,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    env:
+      PUBLIC_URL: /toptal-invoices-management/
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -18,7 +21,7 @@ jobs:
 
       - name: Build
         run: npm run build
-        
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3.6.1
         with:
