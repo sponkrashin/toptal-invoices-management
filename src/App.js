@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Container from '@mui/material/Container';
 
-function App() {
+import HeaderWithSidebarContainer from './components/Layout/HeaderWithSidebarContainer';
+import Dashboard from './components/Dashboard/Dashboard';
+
+const WrapperStyled = (props) => (
+  <Box sx={{ display: 'flex' }} {...props}></Box>
+);
+
+const MainStyled = (props) => (
+  <Box
+    sx={{
+      backgroundColor: (theme) =>
+        theme.palette.mode === 'light'
+          ? theme.palette.grey[100]
+          : theme.palette.grey[900],
+      flexGrow: 1,
+      height: '100vh',
+      overflow: 'auto',
+    }}
+    {...props}
+  ></Box>
+);
+
+const ContentStyled = (props) => (
+  <Container sx={{ mt: 4, mb: 4 }} {...props}></Container>
+);
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <WrapperStyled>
+      <HeaderWithSidebarContainer />
+      <MainStyled component="main">
+        <Toolbar />
+        <ContentStyled maxWidth="lg">
+          <Dashboard />
+        </ContentStyled>
+      </MainStyled>
+    </WrapperStyled>
   );
 }
-
-export default App;
