@@ -2,8 +2,8 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';
 
-import HeaderWithSidebarContainer from './components/Layout/HeaderWithSidebarContainer';
-import Dashboard from './components/Dashboard/Dashboard';
+import HeaderWithSidebarContainer from './components/layout/HeaderWithSidebarContainer';
+import Dashboard from './components/dashboard/Dashboard';
 
 const WrapperStyled = (props) => (
   <Box sx={{ display: 'flex' }} {...props}></Box>

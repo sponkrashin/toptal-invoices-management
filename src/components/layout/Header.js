@@ -7,8 +7,8 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 
-import Login from './Login';
 import LoggedUser from './LoggedUser';
+import AnonymousUser from './AnonymousUser';
 
 const AppBarStyled = styled(MuiAppBar)(({ theme }) => ({
   zIndex: theme.zIndex.drawer + 1,
@@ -44,13 +44,20 @@ function Header({ open, onToggleDrawer }) {
       userName: ' Test User',
     });
 
+  const signUpClickHandler = () => {
+    console.log('Sign Up');
+  };
+
   const userAuth = currentUserAuth.isAuth ? (
     <LoggedUser
       userName={currentUserAuth.userName}
       onSignOutClick={signOutClickHandler}
     />
   ) : (
-    <Login onSignInClick={signInClickHandler} />
+    <AnonymousUser
+      onSignInClick={signInClickHandler}
+      onSignUpClick={signUpClickHandler}
+    />
   );
 
   return (
