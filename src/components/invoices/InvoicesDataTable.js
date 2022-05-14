@@ -1,29 +1,28 @@
 import PropTypes from 'prop-types';
-import Link from '@mui/material/Link';
 
-import DataTable from 'components/UI/DataTable';
-import { preventDefault } from 'utils/utils';
+import DataTable from 'components/ui/DataTable';
 
 const columns = [
   {
-    title: 'Client Name',
-    field: 'clientName',
+    title: 'Date',
+    field: 'date',
   },
   {
-    title: 'Contact',
-    field: 'contactName',
+    title: 'Number',
+    field: 'number',
   },
   {
-    title: 'Contact Email',
-    getValue: (row) => (
-      <Link href={`mailto:${row.contactEmail}`} onClick={preventDefault}>
-        {row.contactEmail}
-      </Link>
-    ),
+    title: 'Client',
+    field: 'client',
+  },
+  {
+    title: 'Amount',
+    getValue: (row) => `$${row.amount}`,
+    align: 'right',
   },
 ];
 
-function ClientsDataTable({
+function InvoicesDataTable({
   data,
   onRowClick,
   enableFiltering,
@@ -38,7 +37,7 @@ function ClientsDataTable({
   return <DataTable columns={columns} rows={data} onRowClick={onRowClick} />;
 }
 
-ClientsDataTable.propTypes = {
+InvoicesDataTable.propTypes = {
   data: PropTypes.arrayOf(
     PropTypes.shape({
       key: PropTypes.oneOfType([
@@ -53,4 +52,4 @@ ClientsDataTable.propTypes = {
   enablePagination: PropTypes.bool,
 };
 
-export default ClientsDataTable;
+export default InvoicesDataTable;

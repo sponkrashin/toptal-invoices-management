@@ -1,10 +1,10 @@
+import { Fragment } from 'react';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
-import Container from '@mui/material/Container';
 
-import ClientsDataTable from 'components/Clients/ClientsDataTable';
-import InvoicesDataTable from 'components/Invoices/InvoicesDataTable';
-import Title from 'components/UI/Title';
+import ClientsDataTable from 'components/clients/ClientsDataTable';
+import InvoicesDataTable from 'components/invoices/InvoicesDataTable';
+import Title from 'components/ui/Title';
 import { MOCK_CLIENTS } from 'store/mock-clients';
 import { MOCK_INVOICES } from 'store/mock-invoices';
 
@@ -21,7 +21,7 @@ export default function Dashboard() {
   const invoices = MOCK_INVOICES.filter((_, i) => i < 3);
 
   return (
-    <Container>
+    <Fragment>
       <ComponentPaperStyled>
         <Title>Clients</Title>
         <ClientsDataTable
@@ -36,6 +36,6 @@ export default function Dashboard() {
           onRowClick={(row) => console.log('From dashboard', row)}
         />
       </ComponentPaperStyled>
-    </Container>
+    </Fragment>
   );
 }
