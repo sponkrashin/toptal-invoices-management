@@ -7,6 +7,7 @@ import HeaderWithSidebarContainer from './components/layout/HeaderWithSidebarCon
 import Dashboard from './components/dashboard/Dashboard';
 import Clients from 'components/clients/Clients';
 import Invoices from 'components/invoices/Invoices';
+import NotFound from 'components/exceptions/NotFound';
 import SignUp from 'components/auth/SignUp';
 
 const WrapperStyled = (props) => (
@@ -44,6 +45,7 @@ export default function App() {
             <Route path="/clients" element={<Clients />} />
             <Route path="/invoices" element={<Invoices />} />
             <Route path="/sign-up" element={<SignUp />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </ContentStyled>
       </MainStyled>
