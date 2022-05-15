@@ -1,16 +1,17 @@
-import { useState } from 'react';
+import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
-import MuiAppBar from '@mui/material/AppBar';
+import AppBar from '@mui/material/AppBar';
 import Typography from '@mui/material/Typography';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 
+import { AuthContext } from 'store/auth/auth-context';
 import LoggedUser from './LoggedUser';
 import AnonymousUser from './AnonymousUser';
 
-const AppBarStyled = styled(MuiAppBar)(({ theme }) => ({
+const AppBarStyled = styled(AppBar)(({ theme }) => ({
   zIndex: theme.zIndex.drawer + 1,
   transition: theme.transitions.create(['width', 'margin'], {
     easing: theme.transitions.easing.sharp,
@@ -27,30 +28,17 @@ const TitleStyled = styled(Typography)(() => ({
 }));
 
 function Header({ open, onToggleDrawer }) {
-  const [currentUserAuth, setCurrentUserAuth] = useState({
-    isAuth: false,
-    userName: null,
-  });
+  const authContext = useContext(AuthContext);
 
-  const signOutClickHandler = () =>
-    setCurrentUserAuth({
-      isAuth: false,
-      userName: null,
-    });
+  const signInHandler = (userName) => authContext.onSignIn(userName);
 
-  const signInClickHandler = () =>
-    setCurrentUserAuth({
-      isAuth: true,
-      userName: ' Test User',
-    });
-
-  const userAuth = currentUserAuth.isAuth ? (
+  const userComponent = authContext.isLoggedIn ? (
     <LoggedUser
-      userName={currentUserAuth.userName}
-      onSignOutClick={signOutClickHandler}
+      userName={authContext.userName}
+      onSignOut={authContext.onSignOut}
     />
   ) : (
-    <AnonymousUser onSignInClick={signInClickHandler} />
+    <AnonymousUser onSignIn={signInHandler} />
   );
 
   return (
@@ -65,9 +53,9 @@ function Header({ open, onToggleDrawer }) {
           <MenuIcon />
         </DrawerButtonStyled>
         <TitleStyled component="h1" variant="h6" color="inherit" noWrap>
-          Dashboard
+          Invoices Management
         </TitleStyled>
-        {userAuth}
+        {userComponent}
       </Toolbar>
     </AppBarStyled>
   );

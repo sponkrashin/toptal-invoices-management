@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
-import MuiDrawer from '@mui/material/Drawer';
+import Drawer from '@mui/material/Drawer';
 import Divider from '@mui/material/Divider';
 import Toolbar from '@mui/material/Toolbar';
 
@@ -8,7 +8,7 @@ import SidebarItems from './SidebarItems';
 
 const drawerWidth = 240;
 
-const DrawerStyled = styled(MuiDrawer, {
+const DrawerStyled = styled(Drawer, {
   shouldForwardProp: (prop) => prop !== 'open',
 })(({ theme, open }) => ({
   '& .MuiDrawer-paper': {

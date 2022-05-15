@@ -9,20 +9,20 @@ const UserNameStyled = styled(Typography)(({ theme }) => ({
   marginRight: theme.spacing(2),
 }));
 
-function LoggedUser({ userName, onSignOutClick }) {
+function LoggedUser({ userName, onSignOut }) {
   return (
     <Fragment>
       <UserNameStyled component="h1" variant="h6">
         {userName}
       </UserNameStyled>
-      <UserMenu userName={userName} onSignOutClick={onSignOutClick} />
+      <UserMenu userName={userName} onSignOutClick={onSignOut} />
     </Fragment>
   );
 }
 
 LoggedUser.propTypes = {
   userName: PropTypes.string.isRequired,
-  onSignOutClick: PropTypes.func.isRequired,
+  onSignOut: PropTypes.func.isRequired,
 };
 
 export default LoggedUser;
