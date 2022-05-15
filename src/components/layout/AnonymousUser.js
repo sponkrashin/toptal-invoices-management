@@ -12,10 +12,12 @@ const SignInComponentStyled = (props) => {
   );
 };
 
-function AnonymousUser({ onSignInClick }) {
+function AnonymousUser({ onSignIn }) {
+  const signInHandler = () => onSignIn('Test User');
+
   return (
     <Fragment>
-      <Button color="inherit" onClick={onSignInClick}>
+      <Button color="inherit" onClick={signInHandler}>
         <SignInComponentStyled component="h1" variant="h6">
           Sign In
         </SignInComponentStyled>
@@ -30,7 +32,7 @@ function AnonymousUser({ onSignInClick }) {
 }
 
 AnonymousUser.propTypes = {
-  onSignInClick: PropTypes.func.isRequired,
+  onSignIn: PropTypes.func.isRequired,
 };
 
 export default AnonymousUser;
