@@ -1,9 +1,13 @@
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';
+import { Routes, Route } from 'react-router-dom';
 
 import HeaderWithSidebarContainer from './components/layout/HeaderWithSidebarContainer';
 import Dashboard from './components/dashboard/Dashboard';
+import Clients from 'components/clients/Clients';
+import Invoices from 'components/invoices/Invoices';
+import SignUp from 'components/auth/SignUp';
 
 const WrapperStyled = (props) => (
   <Box sx={{ display: 'flex' }} {...props}></Box>
@@ -35,7 +39,12 @@ export default function App() {
       <MainStyled component="main">
         <Toolbar />
         <ContentStyled maxWidth="lg">
-          <Dashboard />
+          <Routes>
+            <Route path="/" exact element={<Dashboard />} />
+            <Route path="/clients" element={<Clients />} />
+            <Route path="/invoices" element={<Invoices />} />
+            <Route path="/sign-up" element={<SignUp />} />
+          </Routes>
         </ContentStyled>
       </MainStyled>
     </WrapperStyled>
