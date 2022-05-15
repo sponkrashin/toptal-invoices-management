@@ -44,20 +44,13 @@ function Header({ open, onToggleDrawer }) {
       userName: ' Test User',
     });
 
-  const signUpClickHandler = () => {
-    console.log('Sign Up');
-  };
-
   const userAuth = currentUserAuth.isAuth ? (
     <LoggedUser
       userName={currentUserAuth.userName}
       onSignOutClick={signOutClickHandler}
     />
   ) : (
-    <AnonymousUser
-      onSignInClick={signInClickHandler}
-      onSignUpClick={signUpClickHandler}
-    />
+    <AnonymousUser onSignInClick={signInClickHandler} />
   );
 
   return (
