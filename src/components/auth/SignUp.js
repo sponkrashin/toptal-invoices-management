@@ -11,7 +11,6 @@ const WrapperStyled = (props) => {
   return (
     <Box
       sx={{
-        marginTop: 8,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -26,7 +25,7 @@ const WrapperStyled = (props) => {
 
 const IconStyled = (props) => {
   return (
-    <Avatar sx={{ m: 1, bgcolor: 'primary.main' }} {...props}>
+    <Avatar sx={{ mb: 1, bgcolor: 'primary.main' }} {...props}>
       {props.children}
     </Avatar>
   );
@@ -34,7 +33,7 @@ const IconStyled = (props) => {
 
 const FormWrapperStyled = (props) => {
   return (
-    <Box sx={{ mt: 3, width: '100%' }} {...props}>
+    <Box sx={{ mt: 1, width: '100%' }} {...props}>
       {props.children}
     </Box>
   );
