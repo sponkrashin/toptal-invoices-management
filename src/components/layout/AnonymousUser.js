@@ -2,6 +2,7 @@ import { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { Link } from 'react-router-dom';
 
 const SignInComponentStyled = (props) => {
   return (
@@ -11,7 +12,7 @@ const SignInComponentStyled = (props) => {
   );
 };
 
-function AnonymousUser({ onSignInClick, onSignUpClick }) {
+function AnonymousUser({ onSignInClick }) {
   return (
     <Fragment>
       <Button color="inherit" onClick={onSignInClick}>
@@ -19,7 +20,7 @@ function AnonymousUser({ onSignInClick, onSignUpClick }) {
           Sign In
         </SignInComponentStyled>
       </Button>
-      <Button color="inherit" onClick={onSignUpClick}>
+      <Button color="inherit" component={Link} to="/sign-up">
         <Typography component="h1" variant="h6">
           Sign Up
         </Typography>
@@ -30,7 +31,6 @@ function AnonymousUser({ onSignInClick, onSignUpClick }) {
 
 AnonymousUser.propTypes = {
   onSignInClick: PropTypes.func.isRequired,
-  onSignUpClick: PropTypes.func.isRequired,
 };
 
 export default AnonymousUser;
