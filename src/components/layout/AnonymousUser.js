@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 const SignInComponentStyled = (props) => {
   return (
@@ -22,11 +22,13 @@ function AnonymousUser({ onSignIn }) {
           Sign In
         </SignInComponentStyled>
       </Button>
-      <Button color="inherit" component={Link} to="/sign-up">
-        <Typography component="h1" variant="h6">
-          Sign Up
-        </Typography>
-      </Button>
+      <Link href="/sign-up">
+        <Button color="inherit">
+          <Typography component="h1" variant="h6">
+            Sign Up
+          </Typography>
+        </Button>
+      </Link>
     </Fragment>
   );
 }
