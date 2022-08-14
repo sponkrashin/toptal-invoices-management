@@ -1,4 +1,4 @@
-import { Fragment, PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { Button, Typography } from '@mui/material';
@@ -13,7 +13,7 @@ const AnonymousUser = ({ onSignIn }: AnonymousUserProps) => {
   const signInHandler = () => onSignIn('Test User');
 
   return (
-    <Fragment>
+    <>
       <Button color="inherit" onClick={signInHandler}>
         <SignInComponentStyled component="h1" variant="h6">
           Sign In
@@ -26,7 +26,7 @@ const AnonymousUser = ({ onSignIn }: AnonymousUserProps) => {
           </Typography>
         </Button>
       </Link>
-    </Fragment>
+    </>
   );
 };
 

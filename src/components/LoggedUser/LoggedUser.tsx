@@ -1,4 +1,4 @@
-import { Fragment, PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react';
 import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
@@ -14,12 +14,12 @@ export interface LoggedUserProps {
 }
 
 const LoggedUser = ({ userName, onSignOut }: LoggedUserProps) => (
-  <Fragment>
+  <>
     <UserNameStyled component="h1" variant="h6">
       {userName}
     </UserNameStyled>
     <UserMenu userName={userName} onSignOutClick={onSignOut} />
-  </Fragment>
+  </>
 );
 
 LoggedUser.propTypes = {

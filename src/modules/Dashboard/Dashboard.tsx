@@ -1,4 +1,3 @@
-import { Fragment } from 'react';
 import { Paper } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import ClientsDataTable from 'components/ClientsTable';
@@ -20,7 +19,7 @@ const Dashboard = () => {
   const invoices = MOCK_INVOICES.filter((_, i) => i < 3);
 
   return (
-    <Fragment>
+    <>
       <ComponentPaperStyled>
         <Title>Clients</Title>
         <ClientsDataTable data={clients} onRowClick={(row) => console.log('From dashboard', row)} />
@@ -29,7 +28,7 @@ const Dashboard = () => {
         <Title>Invoices</Title>
         <InvoicesDataTable data={invoices} onRowClick={(row) => console.log('From dashboard', row)} />
       </ComponentPaperStyled>
-    </Fragment>
+    </>
   );
 };
 

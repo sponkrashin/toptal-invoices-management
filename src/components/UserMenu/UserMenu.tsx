@@ -1,4 +1,4 @@
-import { Fragment, SyntheticEvent, useState } from 'react';
+import { SyntheticEvent, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Avatar, Menu, MenuItem } from '@mui/material';
 import { styled } from '@mui/material/styles';
@@ -29,7 +29,7 @@ const UserMenu = ({ userName, onSignOutClick }: UserMenuProps) => {
     .join('');
 
   return (
-    <Fragment>
+    <>
       <AvatarStyled onClick={avatarClickHandler}>{firstLetters}</AvatarStyled>
       <Menu
         anchorEl={menuAnchorElement}
@@ -39,7 +39,7 @@ const UserMenu = ({ userName, onSignOutClick }: UserMenuProps) => {
       >
         <MenuItem onClick={onSignOutClick}>Sign out</MenuItem>
       </Menu>
-    </Fragment>
+    </>
   );
 };
 
