@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import Link from '@mui/material/Link';
-
 import DataTable from 'components/ui/DataTable';
 import { preventDefault } from 'utils/utils';
 

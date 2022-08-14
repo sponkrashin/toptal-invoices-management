@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
-import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
-
+import { styled } from '@mui/material/styles';
 import ClientsDataTable from 'components/clients/ClientsDataTable';
 import InvoicesDataTable from 'components/invoices/InvoicesDataTable';
 import Title from 'components/ui/Title';

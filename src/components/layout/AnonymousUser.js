@@ -1,8 +1,8 @@
 import { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import Link from 'next/link';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import Link from 'next/link';
 
 const SignInComponentStyled = (props) => {
   return (

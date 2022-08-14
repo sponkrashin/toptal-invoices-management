@@ -1,7 +1,6 @@
 import { Fragment, useState } from 'react';
-
-import Sidebar from './Sidebar';
 import Header from './Header';
+import Sidebar from './Sidebar';
 
 export default function HeaderWithSidebarContainer() {
   const [open, setOpen] = useState(true);

@@ -1,7 +1,6 @@
 import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';
-
+import Toolbar from '@mui/material/Toolbar';
 import HeaderWithSidebarContainer from 'components/layout/HeaderWithSidebarContainer';
 
 const WrapperStyled = (props) => (

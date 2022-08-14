@@ -1,15 +1,14 @@
 import { useContext } from 'react';
 import PropTypes from 'prop-types';
-import { styled } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
-import Typography from '@mui/material/Typography';
-import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
+import { styled } from '@mui/material/styles';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
 import MenuIcon from '@mui/icons-material/Menu';
-
 import { AuthContext } from 'store/auth/auth-context';
-import LoggedUser from './LoggedUser';
 import AnonymousUser from './AnonymousUser';
+import LoggedUser from './LoggedUser';
 
 const AppBarStyled = styled(AppBar)(({ theme }) => ({
   zIndex: theme.zIndex.drawer + 1,

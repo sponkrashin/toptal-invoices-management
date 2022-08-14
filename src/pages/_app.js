@@ -4,7 +4,6 @@ import React from 'react';
 import Head from 'next/head';
 import CssBaseline from '@mui/material/CssBaseline';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
 import AppWrapper from 'components/layout/AppWrapper';
 import ContextsProvider from 'store/ContextsProvider';
 

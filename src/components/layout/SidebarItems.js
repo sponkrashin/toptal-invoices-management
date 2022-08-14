@@ -1,12 +1,12 @@
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import BarChartIcon from '@mui/icons-material/BarChart';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import PeopleIcon from '@mui/icons-material/People';
-import BarChartIcon from '@mui/icons-material/BarChart';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
 
 export default function SidebarItems() {
   const { pathname: currentPath } = useRouter();
