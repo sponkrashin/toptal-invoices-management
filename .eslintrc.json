@@ -7,10 +7,11 @@
     "plugin:jsx-a11y/recommended"
   ],
   "rules": {
-    "indent": [
+    "arrow-body-style": [
       "error",
-      2
+      "as-needed"
     ],
+    "curly": "error",
     "lines-between-class-members": [
       "error",
       "always"
@@ -39,11 +40,11 @@
       "error"
     ],
     "react/jsx-equals-spacing": [
-      2,
+      "error",
       "never"
     ],
     "react/jsx-indent": [
-      2,
+      "error",
       2,
       {
         "checkAttributes": true,
@@ -51,20 +52,20 @@
       }
     ],
     "react/jsx-max-depth": [
-      2,
+      "error",
       {
         "max": 5
       }
     ],
     "react/jsx-max-props-per-line": [
-      2,
+      "error",
       {
         "maximum": 1,
         "when": "multiline"
       }
     ],
     "react/jsx-wrap-multilines": [
-      1,
+      "error",
       {
         "declaration": "parens-new-line",
         "assignment": "parens-new-line",
@@ -75,7 +76,7 @@
         "logical": "parens-new-line"
       }
     ],
-    "react/jsx-tag-spacing": 2,
+    "react/jsx-tag-spacing": "error",
     "react/no-unescaped-entities": [
       "error",
       {
@@ -85,8 +86,8 @@
         ]
       }
     ],
-    "react/prop-types": 0,
-    "react/react-in-jsx-scope": 0,
+    "react/prop-types": "off",
+    "react/react-in-jsx-scope": "off",
     "react/sort-prop-types": [
       "error",
       {
@@ -139,6 +140,11 @@
             "position": "before"
           },
           {
+            "pattern": "@mui/icons-material/*",
+            "group": "external",
+            "position": "before"
+          },
+          {
             "pattern": "./*.scss",
             "group": "sibling",
             "position": "after"
@@ -149,7 +155,8 @@
           "prop-types",
           "next/*",
           "@mui/material",
-          "@mui/material/*"
+          "@mui/material/*",
+          "@mui/icons-material/*"
         ],
         "alphabetize": {
           "order": "asc",
@@ -158,11 +165,11 @@
         "newlines-between": "never"
       }
     ],
-    "jsx-a11y/anchor-is-valid": 0,
-    "jsx-a11y/click-events-have-key-events": 0,
-    "jsx-a11y/label-has-for": 0,
-    "jsx-a11y/label-has-associated-control": 0,
-    "jsx-a11y/mouse-events-have-key-events": 0,
-    "jsx-a11y/no-autofocus": 0
+    "jsx-a11y/anchor-is-valid": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/label-has-for": "off",
+    "jsx-a11y/label-has-associated-control": "off",
+    "jsx-a11y/mouse-events-have-key-events": "off",
+    "jsx-a11y/no-autofocus": "off"
   }
 }
