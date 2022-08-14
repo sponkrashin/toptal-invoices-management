@@ -11,6 +11,19 @@
       "error",
       2
     ],
+    "lines-between-class-members": [
+      "error",
+      "always"
+    ],
+    "no-multiple-empty-lines": [
+      "error",
+      {
+        "max": 1,
+        "maxEOF": 0,
+        "maxBOF": 0
+      }
+    ],
+    "no-trailing-spaces": "error",
     "semi": [
       "error",
       "always"
@@ -63,6 +76,15 @@
       }
     ],
     "react/jsx-tag-spacing": 2,
+    "react/no-unescaped-entities": [
+      "error",
+      {
+        "forbid": [
+          ">",
+          "}"
+        ]
+      }
+    ],
     "react/prop-types": 0,
     "react/react-in-jsx-scope": 0,
     "react/sort-prop-types": [
@@ -80,6 +102,67 @@
     "import/no-duplicates": [
       "error"
     ],
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling"
+        ],
+        "pathGroups": [
+          {
+            "pattern": "react",
+            "group": "external",
+            "position": "before"
+          },
+          {
+            "pattern": "prop-types",
+            "group": "external",
+            "position": "before"
+          },
+          {
+            "pattern": "next/*",
+            "group": "external",
+            "position": "before"
+          },
+          {
+            "pattern": "@mui/material",
+            "group": "external",
+            "position": "before"
+          },
+          {
+            "pattern": "@mui/material/*",
+            "group": "external",
+            "position": "before"
+          },
+          {
+            "pattern": "./*.scss",
+            "group": "sibling",
+            "position": "after"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": [
+          "react",
+          "prop-types",
+          "next/*",
+          "@mui/material",
+          "@mui/material/*"
+        ],
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        },
+        "newlines-between": "never"
+      }
+    ],
+    "jsx-a11y/anchor-is-valid": 0,
+    "jsx-a11y/click-events-have-key-events": 0,
+    "jsx-a11y/label-has-for": 0,
+    "jsx-a11y/label-has-associated-control": 0,
+    "jsx-a11y/mouse-events-have-key-events": 0,
     "jsx-a11y/no-autofocus": 0
   }
 }
