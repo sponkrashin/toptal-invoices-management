@@ -8,9 +8,9 @@ export default function Clients() {
       <ClientsDataTable
         data={MOCK_CLIENTS}
         onRowClick={(row) => console.log('From clients page', row)}
-        enableFiltering={true}
-        enableSorting={true}
-        enablePagination={true}
+        enableFiltering
+        enableSorting
+        enablePagination
       />
     </Paper>
   );

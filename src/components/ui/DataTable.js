@@ -46,14 +46,14 @@ DataTable.propTypes = {
   columns: PropTypes.arrayOf(
     PropTypes.oneOfType([
       PropTypes.shape({
+        field: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
         align: PropTypes.string,
-        field: PropTypes.string.isRequired,
       }),
       PropTypes.shape({
+        getValue: PropTypes.func.isRequired,
         title: PropTypes.string.isRequired,
         align: PropTypes.string,
-        getValue: PropTypes.func.isRequired,
       }),
     ])
   ),

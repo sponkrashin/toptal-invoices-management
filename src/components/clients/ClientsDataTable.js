@@ -47,10 +47,10 @@ ClientsDataTable.propTypes = {
       ]),
     })
   ),
-  onRowClick: PropTypes.func,
   enableFiltering: PropTypes.bool,
-  enableSorting: PropTypes.bool,
   enablePagination: PropTypes.bool,
+  enableSorting: PropTypes.bool,
+  onRowClick: PropTypes.func,
 };
 
 export default ClientsDataTable;

@@ -8,9 +8,9 @@ export default function Invoices() {
       <InvoicesDataTable
         data={MOCK_INVOICES}
         onRowClick={(row) => console.log('From invoices page', row)}
-        enableFiltering={true}
-        enableSorting={true}
-        enablePagination={true}
+        enableFiltering
+        enableSorting
+        enablePagination
       />
     </Paper>
   );
