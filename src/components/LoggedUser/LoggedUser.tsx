@@ -2,7 +2,7 @@ import { Fragment, PropsWithChildren } from 'react';
 import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
-import UserMenu from './UserMenu';
+import UserMenu from '../UserMenu';
 
 const UserNameStyled = styled<PropsWithChildren<any>>(Typography)(({ theme }) => ({
   marginRight: theme.spacing(2),

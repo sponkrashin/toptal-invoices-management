@@ -4,8 +4,8 @@ import { AppBar, IconButton, Toolbar, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import MenuIcon from '@mui/icons-material/Menu';
 import { AuthContext } from 'store/auth/AuthContext';
-import AnonymousUser from './AnonymousUser';
-import LoggedUser from './LoggedUser';
+import AnonymousUser from '../AnonymousUser';
+import LoggedUser from '../LoggedUser';
 
 const AppBarStyled = styled<PropsWithChildren<any>>(AppBar)(({ theme }) => ({
   zIndex: theme.zIndex.drawer + 1,

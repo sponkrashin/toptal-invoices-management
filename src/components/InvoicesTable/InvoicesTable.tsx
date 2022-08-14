@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import DataTable, { DataTableColumn, DataTableRow } from 'components/ui/DataTable';
+import DataTable, { DataTableColumn, DataTableRow } from 'components/DataTable';
 
 const columns: DataTableColumn[] = [
   {

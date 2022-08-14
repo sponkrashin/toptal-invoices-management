@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { Divider, Drawer } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Toolbar from '@mui/material/Toolbar';
-import SidebarItems from './SidebarItems';
+import SidebarItems from '../SidebarItems';
 
 const drawerWidth = 240;
 

@@ -1,10 +1,10 @@
 import { Paper } from '@mui/material';
+import InvoicesTable from 'components/InvoicesTable';
 import { MOCK_INVOICES } from 'store/mock-invoices';
-import InvoicesDataTable from './InvoicesDataTable';
 
 const Invoices = () => (
   <Paper>
-    <InvoicesDataTable
+    <InvoicesTable
       data={MOCK_INVOICES}
       onRowClick={(row) => console.log('From invoices page', row)}
       enableFiltering

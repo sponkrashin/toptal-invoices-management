@@ -1,7 +1,7 @@
 import { PropsWithChildren } from 'react';
 import { AppProps } from 'next/app';
 import { Box, Container, Toolbar } from '@mui/material';
-import HeaderWithSidebarContainer from 'components/layout/HeaderWithSidebarContainer';
+import HeaderWithSidebarContainer from 'components/HeaderWithSidebarContainer';
 
 const WrapperStyled = (props: PropsWithChildren<{}>) => <Box sx={{ display: 'flex' }} {...props} />;
 

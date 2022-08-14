@@ -1,9 +1,9 @@
 import { Fragment } from 'react';
 import { Paper } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import ClientsDataTable from 'components/clients/ClientsDataTable';
-import InvoicesDataTable from 'components/invoices/InvoicesDataTable';
-import Title from 'components/ui/Title';
+import ClientsDataTable from 'components/ClientsTable';
+import InvoicesDataTable from 'components/InvoicesTable';
+import Title from 'components/Title';
 import { MOCK_CLIENTS } from 'store/mock-clients';
 import { MOCK_INVOICES } from 'store/mock-invoices';
 

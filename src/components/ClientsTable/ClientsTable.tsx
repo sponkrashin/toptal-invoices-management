@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { Link } from '@mui/material';
-import DataTable, { DataTableColumn, DataTableRow } from 'components/ui/DataTable';
+import DataTable, { DataTableColumn, DataTableRow } from 'components/DataTable';
 import { preventDefault } from 'utils/utils';
 
 const columns: DataTableColumn[] = [
