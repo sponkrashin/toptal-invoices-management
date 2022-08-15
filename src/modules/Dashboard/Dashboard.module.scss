@@ -1,0 +1,8 @@
+@import 'styles/variables';
+
+.card {
+  padding: 2 * $spacing;
+  margin: 2 * $spacing 0;
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,12 @@
+$spacing: getThemeVariable('spacingValue');
+
+$primary-main-color: getThemeVariable('palette.primary.main');
+
+$screen-width-sm: getThemeVariable('breakpoints.values.sm') + px;
+$screen-width-lg: getThemeVariable('breakpoints.values.lg') + px;
+
+$drawer-z-index: getThemeVariable('zIndex.drawer');
+$drawer-collapsed-width: 56px;
+$drawer-expanded-width: 240px;
+$drawer-show-transition: getThemeVariable('drawerShowTransition');
+$drawer-hide-transition: getThemeVariable('drawerHideTransition');

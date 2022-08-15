@@ -1,13 +1,12 @@
-import '../styles/styles.css';
+import 'styles/styles.scss';
 
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { CssBaseline } from '@mui/material';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import AppWrapper from 'components/layout/AppWrapper';
+import { ThemeProvider } from '@mui/material/styles';
+import AppWrapper from 'components/AppWrapper';
 import StoreProvider from 'store/StoreProvider';
-
-const theme = createTheme();
+import { theme } from 'theme/theme';
 
 const App = (props: AppProps) => (
   <>
