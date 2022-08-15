@@ -1,17 +1,10 @@
 import { Paper } from '@mui/material';
-import { styled } from '@mui/material/styles';
-import ClientsDataTable from 'components/ClientsTable';
-import InvoicesDataTable from 'components/InvoicesTable';
+import ClientsTable from 'components/ClientsTable';
+import InvoicesTable from 'components/InvoicesTable';
 import Title from 'components/Title';
 import { MOCK_CLIENTS } from 'store/mock-clients';
 import { MOCK_INVOICES } from 'store/mock-invoices';
-
-const ComponentPaperStyled = styled(Paper)(({ theme }) => ({
-  padding: theme.spacing(2),
-  margin: theme.spacing(2, 0),
-  display: 'flex',
-  flexDirection: 'column',
-}));
+import styles from './Dashboard.module.scss';
 
 const Dashboard = () => {
   // Temporarily, just as an example
@@ -20,14 +13,14 @@ const Dashboard = () => {
 
   return (
     <>
-      <ComponentPaperStyled>
+      <Paper className={styles.card}>
         <Title>Clients</Title>
-        <ClientsDataTable data={clients} onRowClick={(row) => console.log('From dashboard', row)} />
-      </ComponentPaperStyled>
-      <ComponentPaperStyled>
+        <ClientsTable data={clients} onRowClick={(row) => console.log('From dashboard', row)} />
+      </Paper>
+      <Paper className={styles.card}>
         <Title>Invoices</Title>
-        <InvoicesDataTable data={invoices} onRowClick={(row) => console.log('From dashboard', row)} />
-      </ComponentPaperStyled>
+        <InvoicesTable data={invoices} onRowClick={(row) => console.log('From dashboard', row)} />
+      </Paper>
     </>
   );
 };

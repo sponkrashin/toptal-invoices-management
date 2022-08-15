@@ -1,9 +1,7 @@
-import { PropsWithChildren } from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { Button, Typography } from '@mui/material';
-
-const SignInComponentStyled = (props: PropsWithChildren<any>) => <Typography sx={{ mr: 2 }} {...props} />;
+import styles from './AnonymousUser.module.scss';
 
 export interface AnonymousUserProps {
   onSignIn: Function;
@@ -15,9 +13,9 @@ const AnonymousUser = ({ onSignIn }: AnonymousUserProps) => {
   return (
     <>
       <Button color="inherit" onClick={signInHandler}>
-        <SignInComponentStyled component="h1" variant="h6">
+        <Typography className={styles.signInContainer} component="h1" variant="h6">
           Sign In
-        </SignInComponentStyled>
+        </Typography>
       </Button>
       <Link href="/sign-up">
         <Button color="inherit">

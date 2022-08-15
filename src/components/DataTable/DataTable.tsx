@@ -1,11 +1,6 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
-import { styled } from '@mui/material/styles';
-
-const TableRowStyled = styled(TableRow)(({ onClick }) => ({
-  cursor: onClick && 'pointer',
-}));
+import styles from './DataTable.module.scss';
 
 export interface DataTableColumn {
   align?: 'inherit' | 'left' | 'center' | 'right' | 'justify';
@@ -42,9 +37,9 @@ const DataTable = ({ columns, rows, onRowClick }: DataTableProps) => {
   const getRowClickHandler = (row: DataTableRow) => onRowClick && (() => onRowClick(row));
 
   const tableRows = rows.map((row) => (
-    <TableRowStyled key={row.key} onClick={getRowClickHandler(row)}>
+    <TableRow className={styles.row} key={row.key} onClick={getRowClickHandler(row)}>
       {getTableRowCellsFunc(row)}
-    </TableRowStyled>
+    </TableRow>
   ));
 
   return (

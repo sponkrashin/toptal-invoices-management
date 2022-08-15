@@ -1,12 +1,7 @@
-import { PropsWithChildren } from 'react';
 import PropTypes from 'prop-types';
-import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import UserMenu from '../UserMenu';
-
-const UserNameStyled = styled<PropsWithChildren<any>>(Typography)(({ theme }) => ({
-  marginRight: theme.spacing(2),
-}));
+import styles from './LoggedUser.module.scss';
 
 export interface LoggedUserProps {
   userName: string;
@@ -15,9 +10,9 @@ export interface LoggedUserProps {
 
 const LoggedUser = ({ userName, onSignOut }: LoggedUserProps) => (
   <>
-    <UserNameStyled component="h1" variant="h6">
+    <Typography className={styles.username} component="h1" variant="h6">
       {userName}
-    </UserNameStyled>
+    </Typography>
     <UserMenu userName={userName} onSignOutClick={onSignOut} />
   </>
 );

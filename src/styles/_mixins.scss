@@ -1,0 +1,11 @@
+@import 'variables';
+
+@mixin screen($size) {
+  @if ($size == '<sm') {
+    @media screen and (max-width: calc($screen-width-sm - 1px)) {
+      @content;
+    }
+  } @else {
+    @error "Unknown size #{$size}";
+  }
+}

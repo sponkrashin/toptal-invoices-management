@@ -1,0 +1,16 @@
+@import 'styles/variables';
+
+.wrapper {
+  display: flex;
+}
+
+.mainContainer {
+  flex-grow: 1;
+  height: 100vh;
+  overflow: auto;
+}
+
+.content {
+  margin: 4 * $spacing auto;
+  max-width: $screen-width-lg;
+}

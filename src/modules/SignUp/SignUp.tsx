@@ -1,34 +1,16 @@
-import { PropsWithChildren } from 'react';
 import { Avatar, Box, Button, Grid, Link, TextField, Typography } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-
-const WrapperStyled = (props: PropsWithChildren<{}>) => (
-  <Box
-    sx={{
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      maxWidth: 'sm',
-    }}
-    {...props}
-  />
-);
-
-const IconStyled = (props: PropsWithChildren<{}>) => <Avatar sx={{ mb: 1, bgcolor: 'primary.main' }} {...props} />;
-
-const FormWrapperStyled = (props: PropsWithChildren<any>) => <Box sx={{ mt: 1, width: '100%' }} {...props} />;
-
-const SubmitButtonWrapperStyled = (props: PropsWithChildren<any>) => <Button sx={{ mt: 3, mb: 2 }} {...props} />;
+import styles from './SignUp.module.scss';
 
 const SignUp = () => (
-  <WrapperStyled>
-    <IconStyled>
+  <Box className={styles.wrapper}>
+    <Avatar className={styles.icon}>
       <LockOutlinedIcon />
-    </IconStyled>
+    </Avatar>
     <Typography component="h1" variant="h5">
       Sign up
     </Typography>
-    <FormWrapperStyled component="form" noValidate>
+    <Box className={styles.form} component="form" noValidate>
       <TextField
         margin="normal"
         fullWidth
@@ -67,9 +49,9 @@ const SignUp = () => (
         autoComplete="new-password"
         required
       />
-      <SubmitButtonWrapperStyled type="submit" fullWidth variant="contained">
+      <Button className={styles.submitButton} type="submit" fullWidth variant="contained">
         Sign Up
-      </SubmitButtonWrapperStyled>
+      </Button>
       <Grid container justifyContent="flex-end">
         <Grid item>
           <Link href="#" variant="body2">
@@ -77,8 +59,8 @@ const SignUp = () => (
           </Link>
         </Grid>
       </Grid>
-    </FormWrapperStyled>
-  </WrapperStyled>
+    </Box>
+  </Box>
 );
 
 export default SignUp;

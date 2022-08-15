@@ -1,11 +1,7 @@
 import { SyntheticEvent, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Avatar, Menu, MenuItem } from '@mui/material';
-import { styled } from '@mui/material/styles';
-
-const AvatarStyled = styled(Avatar)(() => ({
-  cursor: 'pointer',
-}));
+import styles from './UserMenu.module.scss';
 
 export interface UserMenuProps {
   userName: string;
@@ -30,7 +26,9 @@ const UserMenu = ({ userName, onSignOutClick }: UserMenuProps) => {
 
   return (
     <>
-      <AvatarStyled onClick={avatarClickHandler}>{firstLetters}</AvatarStyled>
+      <Avatar className={styles.icon} onClick={avatarClickHandler}>
+        {firstLetters}
+      </Avatar>
       <Menu
         anchorEl={menuAnchorElement}
         open={!!menuAnchorElement}

@@ -1,5 +1,6 @@
 import { Paper } from '@mui/material';
+import styles from './NotFound.module.scss';
 
-const NotFound = () => <Paper sx={{ p: 2 }}>There's nothing here!</Paper>;
+const NotFound = () => <Paper className={styles.card}>There's nothing here!</Paper>;
 
 export default NotFound;
