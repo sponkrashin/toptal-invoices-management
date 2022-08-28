@@ -1,8 +1,9 @@
-import { MouseEventHandler, useContext } from 'react';
+import { MouseEventHandler } from 'react';
 import PropTypes from 'prop-types';
 import MenuIcon from '@mui/icons-material/Menu';
 import { AppBar, IconButton, Toolbar, Typography } from '@mui/material';
-import { AuthContext } from 'store/auth/AuthContext';
+import { selectUserIsLoggedIn, selectUserName, signIn, signOut } from 'store/authSlice';
+import { useSelector, useDispatch } from 'store/hooks';
 import AnonymousUser from '../AnonymousUser';
 import LoggedUser from '../LoggedUser';
 import styles from './Header.module.scss';
@@ -12,14 +13,17 @@ export interface HeaderProps {
 }
 
 const Header = ({ onToggleDrawer }: HeaderProps) => {
-  const authContext = useContext(AuthContext)!;
+  const userIsLoggedIn = useSelector(selectUserIsLoggedIn);
+  const userName = useSelector(selectUserName);
+  const dispatch = useDispatch();
 
-  const signInHandler = (userName: string) => authContext.onSignIn(userName);
+  const handleSignIn = (userName: string) => dispatch(signIn(userName));
+  const handleSignOut = () => dispatch(signOut());
 
-  const userComponent = authContext.isLoggedIn ? (
-    <LoggedUser userName={authContext.userName!} onSignOut={authContext.onSignOut} />
+  const userComponent = userIsLoggedIn ? (
+    <LoggedUser userName={userName!} onSignOut={handleSignOut} />
   ) : (
-    <AnonymousUser onSignIn={signInHandler} />
+    <AnonymousUser onSignIn={handleSignIn} />
   );
 
   return (
