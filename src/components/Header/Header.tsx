@@ -1,7 +1,7 @@
 import { MouseEventHandler, useContext } from 'react';
 import PropTypes from 'prop-types';
-import { AppBar, IconButton, Toolbar, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import { AppBar, IconButton, Toolbar, Typography } from '@mui/material';
 import { AuthContext } from 'store/auth/AuthContext';
 import AnonymousUser from '../AnonymousUser';
 import LoggedUser from '../LoggedUser';

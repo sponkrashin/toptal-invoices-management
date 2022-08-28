@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { List, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import PeopleIcon from '@mui/icons-material/People';
+import { List, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 
 const SidebarItems = () => {
   const { pathname: currentPath } = useRouter();
