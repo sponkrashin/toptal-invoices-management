@@ -4,8 +4,9 @@ import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { CssBaseline } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
+import { Provider } from 'react-redux';
 import AppWrapper from 'components/AppWrapper';
-import StoreProvider from 'store/StoreProvider';
+import { store } from 'store/rootStore';
 import { theme } from 'theme/theme';
 
 const App = (props: AppProps) => (
@@ -13,13 +14,13 @@ const App = (props: AppProps) => (
     <Head>
       <title>Invoices Management</title>
     </Head>
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <StoreProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
         <AppWrapper {...props} />
         <div id="modal-root"></div>
-      </StoreProvider>
-    </ThemeProvider>
+      </ThemeProvider>
+    </Provider>
   </>
 );
 
