@@ -1,5 +1,5 @@
-import { Avatar, Box, Button, Grid, Link, TextField, Typography } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import { Avatar, Box, Button, Grid, Link, TextField, Typography } from '@mui/material';
 import styles from './SignIn.module.scss';
 
 const SignIn = () => (
