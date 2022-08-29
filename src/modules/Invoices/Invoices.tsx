@@ -1,17 +1,21 @@
-import { Paper } from '@mui/material';
+import Card from 'components/Card';
 import InvoicesTable from 'components/InvoicesTable';
-import { MOCK_INVOICES } from 'store/mock-invoices';
+import { useInvoices } from 'data/useInvoices';
 
-const Invoices = () => (
-  <Paper>
-    <InvoicesTable
-      data={MOCK_INVOICES}
-      onRowClick={(row) => console.log('From invoices page', row)}
-      enableFiltering
-      enableSorting
-      enablePagination
-    />
-  </Paper>
-);
+const Invoices = () => {
+  const { data, isLoading } = useInvoices();
+
+  return (
+    <Card loading={isLoading}>
+      <InvoicesTable
+        data={data}
+        onRowClick={(row) => console.log('From invoices page', row)}
+        enableFiltering
+        enableSorting
+        enablePagination
+      />
+    </Card>
+  );
+};
 
 export default Invoices;

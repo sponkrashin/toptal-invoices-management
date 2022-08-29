@@ -1,28 +1,33 @@
 import PropTypes from 'prop-types';
 import DataTable, { DataTableColumn, DataTableRow } from 'components/DataTable';
+import { Invoice } from 'data/invoice';
 
 const columns: DataTableColumn[] = [
   {
     title: 'Date',
-    field: 'date',
+    getValue: ({ date }: Invoice) => date.toLocaleDateString(),
   },
   {
     title: 'Number',
-    field: 'number',
+    field: 'invoiceNumber',
   },
   {
     title: 'Client',
-    field: 'client',
+    getValue: ({
+      client: {
+        companyDetails: { name },
+      },
+    }: Invoice) => name,
   },
   {
     title: 'Amount',
-    getValue: ({ amount }: { amount: number }) => `$${amount}`,
+    getValue: ({ value }: Invoice) => `$${value}`,
     align: 'right',
   },
 ];
 
 export interface InvoicesDataTableProps {
-  data: DataTableRow[];
+  data: Invoice[];
   enableFiltering?: boolean;
   enableSorting?: boolean;
   enablePagination?: boolean;
@@ -37,13 +42,13 @@ const InvoicesDataTable = ({
   enablePagination,
 }: InvoicesDataTableProps) => {
   // Temporarily, just as a placeholder for future changes
-  console.log(`Filtering enabled: ${enableFiltering || false}`);
-  console.log(`Sorting enabled: ${enableSorting || false}`);
-  console.log(`Pagination enabled: ${enablePagination || false}`);
+  // console.log(`Filtering enabled: ${enableFiltering || false}`);
+  // console.log(`Sorting enabled: ${enableSorting || false}`);
+  // console.log(`Pagination enabled: ${enablePagination || false}`);
 
   const handleRowClick = (row: DataTableRow) => onRowClick?.(row);
 
-  return <DataTable columns={columns} rows={data} onRowClick={handleRowClick} />;
+  return <DataTable columns={columns} rows={data.map((d) => ({ ...d, key: d.id }))} onRowClick={handleRowClick} />;
 };
 
 InvoicesDataTable.propTypes = {

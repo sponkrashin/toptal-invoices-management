@@ -1,29 +1,30 @@
 import PropTypes from 'prop-types';
 import { Link } from '@mui/material';
 import DataTable, { DataTableColumn, DataTableRow } from 'components/DataTable';
+import { Client } from 'data/client';
 import { preventDefault } from 'utils/utils';
 
 const columns: DataTableColumn[] = [
   {
     title: 'Client Name',
-    field: 'clientName',
+    getValue: ({ companyDetails: { name } }: Client) => name,
   },
   {
     title: 'Contact',
-    field: 'contactName',
+    field: 'name',
   },
   {
     title: 'Contact Email',
-    getValue: ({ contactEmail }: { contactEmail: string }) => (
-      <Link href={`mailto:${contactEmail}`} onClick={preventDefault}>
-        {contactEmail}
+    getValue: ({ email }: Client) => (
+      <Link href={`mailto:${email}`} onClick={preventDefault}>
+        {email}
       </Link>
     ),
   },
 ];
 
 export interface ClientsDataTableProps {
-  data: DataTableRow[];
+  data: Client[];
   enableFiltering?: boolean;
   enableSorting?: boolean;
   enablePagination?: boolean;
@@ -38,13 +39,13 @@ const ClientsDataTable = ({
   enablePagination,
 }: ClientsDataTableProps) => {
   // Temporarily, just as a placeholder for future changes
-  console.log(`Filtering enabled: ${enableFiltering || false}`);
-  console.log(`Sorting enabled: ${enableSorting || false}`);
-  console.log(`Pagination enabled: ${enablePagination || false}`);
+  // console.log(`Filtering enabled: ${enableFiltering || false}`);
+  // console.log(`Sorting enabled: ${enableSorting || false}`);
+  // console.log(`Pagination enabled: ${enablePagination || false}`);
 
   const handleRowClick = (row: DataTableRow) => onRowClick?.(row);
 
-  return <DataTable columns={columns} rows={data} onRowClick={handleRowClick} />;
+  return <DataTable columns={columns} rows={data.map((d) => ({ ...d, key: d.id }))} onRowClick={handleRowClick} />;
 };
 
 ClientsDataTable.propTypes = {
