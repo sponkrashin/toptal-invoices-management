@@ -1,17 +1,21 @@
 import { Paper } from '@mui/material';
 import InvoicesTable from 'components/InvoicesTable';
-import { MOCK_INVOICES } from 'store/mock-invoices';
+import { useInvoices } from 'data/useInvoices';
 
-const Invoices = () => (
-  <Paper>
-    <InvoicesTable
-      data={MOCK_INVOICES}
-      onRowClick={(row) => console.log('From invoices page', row)}
-      enableFiltering
-      enableSorting
-      enablePagination
-    />
-  </Paper>
-);
+const Invoices = () => {
+  const { data } = useInvoices();
+
+  return (
+    <Paper>
+      <InvoicesTable
+        data={data}
+        onRowClick={(row) => console.log('From invoices page', row)}
+        enableFiltering
+        enableSorting
+        enablePagination
+      />
+    </Paper>
+  );
+};
 
 export default Invoices;

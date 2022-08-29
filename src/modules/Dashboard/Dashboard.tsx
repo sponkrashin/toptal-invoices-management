@@ -2,14 +2,13 @@ import { Paper } from '@mui/material';
 import ClientsTable from 'components/ClientsTable';
 import InvoicesTable from 'components/InvoicesTable';
 import Title from 'components/Title';
-import { MOCK_CLIENTS } from 'store/mock-clients';
-import { MOCK_INVOICES } from 'store/mock-invoices';
+import { useClients } from 'data/useClients';
+import { useInvoices } from 'data/useInvoices';
 import styles from './Dashboard.module.scss';
 
 const Dashboard = () => {
-  // Temporarily, just as an example
-  const clients = MOCK_CLIENTS.filter((_, i) => i < 2);
-  const invoices = MOCK_INVOICES.filter((_, i) => i < 3);
+  const { data: clients } = useClients();
+  const { data: invoices } = useInvoices();
 
   return (
     <>
