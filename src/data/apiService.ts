@@ -4,7 +4,7 @@ import { InvoiceResponse } from './invoiceResponse';
 
 async function baseApiCall<T = any>(relativeUrl: string, options?: RequestInit): Promise<T> {
   const baseUrl = process.env.NEXT_PUBLIC_BACKEND_API;
-  const authToken = '111';
+  const authToken = '555';
 
   const headers = {
     ...options?.headers,
