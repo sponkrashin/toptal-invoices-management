@@ -13,7 +13,11 @@ const columns: DataTableColumn[] = [
   },
   {
     title: 'Client',
-    getValue: ({ client: { name } }: Invoice) => name,
+    getValue: ({
+      client: {
+        companyDetails: { name },
+      },
+    }: Invoice) => name,
   },
   {
     title: 'Amount',
