@@ -1,15 +1,13 @@
-import { Paper } from '@mui/material';
 import keyBy from 'lodash/keyBy';
+import Card from 'components/Card';
 import ClientsTable from 'components/ClientsTable';
 import InvoicesTable from 'components/InvoicesTable';
-import Title from 'components/Title';
 import { useClients } from 'data/useClients';
 import { useInvoices } from 'data/useInvoices';
-import styles from './Dashboard.module.scss';
 
 const Dashboard = () => {
-  const { data: clients } = useClients();
-  const { data: invoices } = useInvoices();
+  const { data: clients, isLoading: clientsLoading } = useClients();
+  const { data: invoices, isLoading: invoicesLoading } = useInvoices();
 
   const filteredInvoices = invoices
     .sort((a, b) => b.date.valueOf() - a.date.valueOf())
@@ -21,14 +19,12 @@ const Dashboard = () => {
 
   return (
     <>
-      <Paper className={styles.card}>
-        <Title>Clients</Title>
+      <Card title="Clients" loading={clientsLoading}>
         <ClientsTable data={filteredClients} onRowClick={(row) => console.log('From dashboard', row)} />
-      </Paper>
-      <Paper className={styles.card}>
-        <Title>Invoices</Title>
+      </Card>
+      <Card title="Invoices" loading={invoicesLoading}>
         <InvoicesTable data={filteredInvoices} onRowClick={(row) => console.log('From dashboard', row)} />
-      </Paper>
+      </Card>
     </>
   );
 };

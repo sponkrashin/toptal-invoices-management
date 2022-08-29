@@ -1,12 +1,12 @@
-import { Paper } from '@mui/material';
+import Card from 'components/Card';
 import InvoicesTable from 'components/InvoicesTable';
 import { useInvoices } from 'data/useInvoices';
 
 const Invoices = () => {
-  const { data } = useInvoices();
+  const { data, isLoading } = useInvoices();
 
   return (
-    <Paper>
+    <Card loading={isLoading}>
       <InvoicesTable
         data={data}
         onRowClick={(row) => console.log('From invoices page', row)}
@@ -14,7 +14,7 @@ const Invoices = () => {
         enableSorting
         enablePagination
       />
-    </Paper>
+    </Card>
   );
 };
 

@@ -1,12 +1,12 @@
-import { Paper } from '@mui/material';
+import Card from 'components/Card';
 import ClientsTable from 'components/ClientsTable';
 import { useClients } from 'data/useClients';
 
 const Clients = () => {
-  const { data } = useClients();
+  const { data, isLoading } = useClients();
 
   return (
-    <Paper>
+    <Card loading={isLoading}>
       <ClientsTable
         data={data}
         onRowClick={(row) => console.log('From clients page', row)}
@@ -14,7 +14,7 @@ const Clients = () => {
         enableSorting
         enablePagination
       />
-    </Paper>
+    </Card>
   );
 };
 
