@@ -4,6 +4,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { Avatar, Box, Button, TextField, Typography, Grid } from '@mui/material';
 import Card from 'components/Card';
 import Link from 'components/Link';
+import Spinner from 'components/Spinner';
 import { useLogin } from 'data/useLogin';
 import { selectUserIsLoggedIn, signIn } from 'store/authSlice';
 import { useDispatch, useSelector } from 'store/hooks';
@@ -12,7 +13,7 @@ import styles from './SignIn.module.scss';
 const SignIn = () => {
   const userIsLoggedIn = useSelector(selectUserIsLoggedIn);
   const dispatch = useDispatch();
-  const { data: userData, execute: login } = useLogin();
+  const { data: userData, isLoading: userDataLoading, execute: login } = useLogin();
   const emailRef = useRef('');
   const passwordRef = useRef('');
   const router = useRouter();
@@ -36,7 +37,7 @@ const SignIn = () => {
     event.preventDefault();
     event.stopPropagation();
 
-    if (userIsLoggedIn || !emailRef.current || !passwordRef.current) {
+    if (userIsLoggedIn || userDataLoading || !emailRef.current || !passwordRef.current) {
       return;
     }
 
@@ -79,8 +80,10 @@ const SignIn = () => {
             type="submit"
             fullWidth
             variant="contained"
+            disabled={userDataLoading}
             onClick={handleSubmitClick}
           >
+            <Spinner size="large" spinning={userDataLoading} inContainer />
             Sign In
           </Button>
           <Grid container justifyContent="flex-end">
