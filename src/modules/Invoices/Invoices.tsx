@@ -2,14 +2,15 @@ import Card from 'components/Card';
 import InvoicesTable from 'components/InvoicesTable';
 import Spinner from 'components/Spinner';
 import { useInvoices } from 'data/useInvoices';
+import styles from './Invoices.module.scss';
 
 const Invoices = () => {
   const { data, isLoading } = useInvoices();
 
   return (
-    <Card>
-      <Spinner size="large" spinning={!!isLoading} />
-      {isLoading && (
+    <Card contentClassName={`${isLoading ? styles.cardContentWithLoading : ''}`}>
+      <Spinner size="large" spinning={isLoading} />
+      {!isLoading && (
         <InvoicesTable
           data={data}
           onRowClick={(row) => console.log('From invoices page', row)}

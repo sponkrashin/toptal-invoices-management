@@ -7,12 +7,13 @@ import styles from './Card.module.scss';
 export interface CardProps {
   title?: string;
   className?: string;
+  contentClassName?: string;
 }
 
-const Card = ({ title, children, className }: PropsWithChildren<CardProps>) => (
+const Card = ({ title, children, className, contentClassName }: PropsWithChildren<CardProps>) => (
   <Paper className={`${styles.card} ${className ?? ''}`}>
     {title && <Title>{title}</Title>}
-    <Container className={styles.cardContent}>{children}</Container>
+    <Container className={`${styles.cardContent} ${contentClassName ?? ''}`}>{children}</Container>
   </Paper>
 );
 
