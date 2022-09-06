@@ -2,6 +2,7 @@ import keyBy from 'lodash/keyBy';
 import Card from 'components/Card';
 import ClientsTable from 'components/ClientsTable';
 import InvoicesTable from 'components/InvoicesTable';
+import Spinner from 'components/Spinner';
 import { useClients } from 'data/useClients';
 import { useInvoices } from 'data/useInvoices';
 
@@ -19,11 +20,17 @@ const Dashboard = () => {
 
   return (
     <>
-      <Card title="Clients" loading={clientsLoading}>
-        <ClientsTable data={filteredClients} onRowClick={(row) => console.log('From dashboard', row)} />
+      <Card title="Clients">
+        <Spinner size="large" spinning={!!clientsLoading} />
+        {clientsLoading && (
+          <ClientsTable data={filteredClients} onRowClick={(row) => console.log('From dashboard', row)} />
+        )}
       </Card>
-      <Card title="Invoices" loading={invoicesLoading}>
-        <InvoicesTable data={filteredInvoices} onRowClick={(row) => console.log('From dashboard', row)} />
+      <Card title="Invoices">
+        <Spinner size="large" spinning={!!invoicesLoading} />
+        {invoicesLoading && (
+          <InvoicesTable data={filteredInvoices} onRowClick={(row) => console.log('From dashboard', row)} />
+        )}
       </Card>
     </>
   );
