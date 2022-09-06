@@ -6,12 +6,12 @@ import type { AppState, AppThunk } from './rootStore';
 
 export interface AuthState {
   userName: string | null;
-  isLoggedIn: boolean;
+  isLoggedIn: boolean | null;
 }
 
 const initialState: AuthState = {
   userName: null,
-  isLoggedIn: false,
+  isLoggedIn: null,
 };
 
 export const authSlice = createSlice({
