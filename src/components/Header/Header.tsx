@@ -1,7 +1,8 @@
-import { MouseEventHandler } from 'react';
+import { MouseEventHandler, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import MenuIcon from '@mui/icons-material/Menu';
 import { AppBar, IconButton, Toolbar, Typography } from '@mui/material';
+import { useLogin } from 'data/useLogin';
 import { selectUserIsLoggedIn, selectUserName, signIn, signOut } from 'store/authSlice';
 import { useSelector, useDispatch } from 'store/hooks';
 import AnonymousUser from '../AnonymousUser';
@@ -17,7 +18,18 @@ const Header = ({ onToggleDrawer }: HeaderProps) => {
   const userName = useSelector(selectUserName);
   const dispatch = useDispatch();
 
-  const handleSignIn = (userName: string) => dispatch(signIn(userName));
+  const { data: userData, execute: login } = useLogin();
+
+  const handleSignIn = () => {
+    login('fake_user1@officehourtesting.com', '123456');
+  };
+
+  useEffect(() => {
+    if (userData) {
+      dispatch(signIn(userData.name));
+    }
+  }, [userData, dispatch]);
+
   const handleSignOut = () => dispatch(signOut());
 
   const userComponent = userIsLoggedIn ? (
