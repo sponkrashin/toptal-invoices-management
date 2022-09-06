@@ -8,9 +8,8 @@ import Card from 'components/Card';
 import Link from 'components/Link';
 import Spinner from 'components/Spinner';
 import { useLogin } from 'data/useLogin';
-import { NavigationTarget, useAppRouter } from 'hooks/useAppRouter';
-import { selectUserIsLoggedIn, signIn } from 'store/authSlice';
-import { useDispatch, useSelector } from 'store/hooks';
+import { signIn } from 'store/authSlice';
+import { useDispatch } from 'store/hooks';
 import styles from './SignIn.module.scss';
 
 interface FormInput {
@@ -35,12 +34,9 @@ const INVALID_CREDENTIALS_ERROR = 'Email or password is incorrect';
 const GENERIC_ERROR = 'Something unusual happened. Please, try again later';
 
 const SignIn = () => {
-  const userIsLoggedIn = useSelector(selectUserIsLoggedIn);
   const dispatch = useDispatch();
 
   const { isLoading: userDataLoading, data: userData, error: userDataError, execute: login } = useLogin();
-
-  const { navigate } = useAppRouter();
 
   const {
     register,
@@ -49,19 +45,13 @@ const SignIn = () => {
   } = useForm({ defaultValues: defaultFormValues, resolver: zodResolver(formSchema) });
 
   useEffect(() => {
-    if (userIsLoggedIn) {
-      navigate(NavigationTarget.Dashboard);
-    }
-  }, [userIsLoggedIn, navigate]);
-
-  useEffect(() => {
-    if (!userIsLoggedIn && userData) {
+    if (userData) {
       dispatch(signIn(userData.name, userData.token));
     }
-  }, [userIsLoggedIn, userData, dispatch]);
+  }, [userData, dispatch]);
 
   const handleFormSubmit = (data: FormInput) => {
-    if (userIsLoggedIn || userDataLoading || !data.email || !data.password) {
+    if (userDataLoading || !data.email || !data.password) {
       return;
     }
 
