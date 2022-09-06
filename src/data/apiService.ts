@@ -1,4 +1,5 @@
 import { Client } from './client';
+import { HttpError } from './httpError';
 import { Invoice } from './invoice';
 import { InvoiceResponse } from './invoiceResponse';
 import { LoginRequest } from './loginRequest';
@@ -21,6 +22,10 @@ async function baseApiCall<T = any>(relativeUrl: string, includeAuthToken: boole
   };
 
   const response = await fetch(`${baseUrl}${relativeUrl}`, { ...options, headers });
+  if (!response.ok) {
+    throw new HttpError(response.statusText, response.status);
+  }
+
   return (await response.json()) as T;
 }
 
