@@ -36,7 +36,7 @@ export const initializeAuth = (): AppThunk => async (dispatch) => {
     const currentUser = await apiService.getCurrentUser();
     dispatch(signInInternal(currentUser.name));
   } catch (err: any) {
-    if (err instanceof HttpError && err.status === 401) {
+    if (err instanceof HttpError && err.isNotAuthenticated()) {
       dispatch(signOutInternal());
     }
   }
