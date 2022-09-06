@@ -1,3 +1,4 @@
+import * as authTokenStorage from 'services/authTokenStorage';
 import { Client } from './client';
 import { HttpError } from './httpError';
 import { Invoice } from './invoice';
@@ -8,13 +9,14 @@ import { User } from './user';
 
 async function baseApiCall<T = any>(relativeUrl: string, includeAuthToken: boolean, options?: RequestInit): Promise<T> {
   const baseUrl = process.env.NEXT_PUBLIC_BACKEND_API;
-  const authToken = '555';
+  const authToken = authTokenStorage.getAuthToken();
 
-  const authHeaders = includeAuthToken
-    ? {
-        'x-access-token': authToken,
-      }
-    : undefined;
+  const authHeaders =
+    includeAuthToken && authToken
+      ? {
+          'x-access-token': authToken,
+        }
+      : undefined;
 
   const headers = {
     ...options?.headers,
