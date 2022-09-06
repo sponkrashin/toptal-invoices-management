@@ -3,6 +3,10 @@ export class HttpError extends Error {
     super(message);
   }
 
+  isBadRequest(): boolean {
+    return this.status === 400;
+  }
+
   isNotAuthenticated(): boolean {
     return this.status === 401;
   }
