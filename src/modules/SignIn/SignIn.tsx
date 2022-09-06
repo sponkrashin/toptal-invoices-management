@@ -1,8 +1,9 @@
-import { ChangeEvent, useEffect, useRef } from 'react';
+import { ChangeEvent, MouseEvent, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import { Avatar, Box, Button, TextField, Typography } from '@mui/material';
+import { Avatar, Box, Button, TextField, Typography, Grid } from '@mui/material';
 import Card from 'components/Card';
+import Link from 'components/Link';
 import { useLogin } from 'data/useLogin';
 import { selectUserIsLoggedIn, signIn } from 'store/authSlice';
 import { useDispatch, useSelector } from 'store/hooks';
@@ -31,7 +32,7 @@ const SignIn = () => {
   const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) => (emailRef.current = event.target.value);
   const handlePasswordChange = (event: ChangeEvent<HTMLInputElement>) => (passwordRef.current = event.target.value);
 
-  const handleSubmitClick = (event: Event) => {
+  const handleSubmitClick = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     event.stopPropagation();
 
@@ -82,6 +83,13 @@ const SignIn = () => {
           >
             Sign In
           </Button>
+          <Grid container justifyContent="flex-end">
+            <Grid item>
+              <Link href="/sign-up" type="link">
+                Don't have an account? Sign up
+              </Link>
+            </Grid>
+          </Grid>
         </Box>
       </div>
     </Card>
