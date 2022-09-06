@@ -1,14 +1,22 @@
 import { Client } from './client';
 import { Invoice } from './invoice';
 import { InvoiceResponse } from './invoiceResponse';
+import { LoginRequest } from './loginRequest';
+import { LoginResponse } from './loginResponse';
 
-async function baseApiCall<T = any>(relativeUrl: string, options?: RequestInit): Promise<T> {
+async function baseApiCall<T = any>(relativeUrl: string, includeAuthToken: boolean, options?: RequestInit): Promise<T> {
   const baseUrl = process.env.NEXT_PUBLIC_BACKEND_API;
   const authToken = '555';
 
+  const authHeaders = includeAuthToken
+    ? {
+        'x-access-token': authToken,
+      }
+    : undefined;
+
   const headers = {
     ...options?.headers,
-    'x-access-token': authToken,
+    ...authHeaders,
     'Content-Type': 'application/json',
   };
 
@@ -18,7 +26,10 @@ async function baseApiCall<T = any>(relativeUrl: string, options?: RequestInit):
 
 const api = {
   get: function <T = any>(relativeUrl: string) {
-    return baseApiCall<T>(relativeUrl, { method: 'GET' });
+    return baseApiCall<T>(relativeUrl, true, { method: 'GET' });
+  },
+  post: function <T = any>(relativeUrl: string, body: any, includeAuthToken: boolean = true) {
+    return baseApiCall<T>(relativeUrl, includeAuthToken, { method: 'POST', body: JSON.stringify(body) });
   },
 };
 
@@ -42,4 +53,9 @@ export async function getInvoices(): Promise<Invoice[]> {
         client: inv.client,
       } as Invoice)
   );
+}
+
+export async function login(model: LoginRequest): Promise<LoginResponse> {
+  const response = await api.post<LoginResponse>('/login', model, false);
+  return response;
 }
