@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import { useRouter } from 'next/router';
 import { zodResolver } from '@hookform/resolvers/zod';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { Avatar, Button, TextField, Typography, Grid, FormHelperText } from '@mui/material';
@@ -9,10 +8,10 @@ import Card from 'components/Card';
 import Link from 'components/Link';
 import Spinner from 'components/Spinner';
 import { useLogin } from 'data/useLogin';
+import { NavigationTarget, useAppRouter } from 'hooks/useAppRouter';
 import { selectUserIsLoggedIn, signIn } from 'store/authSlice';
 import { useDispatch, useSelector } from 'store/hooks';
 import styles from './SignIn.module.scss';
-import Title from 'components/Title';
 
 interface FormInput {
   email: string;
@@ -41,7 +40,7 @@ const SignIn = () => {
 
   const { isLoading: userDataLoading, data: userData, error: userDataError, execute: login } = useLogin();
 
-  const router = useRouter();
+  const { navigate } = useAppRouter();
 
   const {
     register,
@@ -51,9 +50,9 @@ const SignIn = () => {
 
   useEffect(() => {
     if (userIsLoggedIn) {
-      router.push('/');
+      navigate(NavigationTarget.Dashboard);
     }
-  }, [userIsLoggedIn, router]);
+  }, [userIsLoggedIn, navigate]);
 
   useEffect(() => {
     if (!userIsLoggedIn && userData) {
