@@ -8,6 +8,6 @@ export class HttpError extends Error {
   }
 
   isNotAuthenticated(): boolean {
-    return this.status === 401;
+    return this.status === 401 || this.status === 403;
   }
 }
