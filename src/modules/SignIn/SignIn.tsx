@@ -1,4 +1,5 @@
 import { ChangeEvent, useEffect, useRef } from 'react';
+import { useRouter } from 'next/router';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { Avatar, Box, Button, TextField, Typography } from '@mui/material';
 import Card from 'components/Card';
@@ -13,12 +14,13 @@ const SignIn = () => {
   const { data: userData, execute: login } = useLogin();
   const emailRef = useRef('');
   const passwordRef = useRef('');
+  const router = useRouter();
 
   useEffect(() => {
     if (userIsLoggedIn) {
-      console.debug('Redirect to a dashboard');
+      router.push('/');
     }
-  }, [userIsLoggedIn]);
+  }, [userIsLoggedIn, router]);
 
   useEffect(() => {
     if (!userIsLoggedIn && userData) {
