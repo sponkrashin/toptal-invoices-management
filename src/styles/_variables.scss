@@ -10,3 +10,5 @@ $drawer-collapsed-width: 56px;
 $drawer-expanded-width: 240px;
 $drawer-show-transition: getThemeVariable('drawerShowTransition');
 $drawer-hide-transition: getThemeVariable('drawerHideTransition');
+
+$backdrop-z-index: getThemeVariable('zIndex.tooltip') + 1;
