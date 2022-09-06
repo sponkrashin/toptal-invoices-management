@@ -4,6 +4,7 @@ import { Invoice } from './invoice';
 import { InvoiceResponse } from './invoiceResponse';
 import { LoginRequest } from './loginRequest';
 import { LoginResponse } from './loginResponse';
+import { User } from './user';
 
 async function baseApiCall<T = any>(relativeUrl: string, includeAuthToken: boolean, options?: RequestInit): Promise<T> {
   const baseUrl = process.env.NEXT_PUBLIC_BACKEND_API;
@@ -62,5 +63,10 @@ export async function getInvoices(): Promise<Invoice[]> {
 
 export async function login(model: LoginRequest): Promise<LoginResponse> {
   const response = await api.post<LoginResponse>('/login', model, false);
+  return response;
+}
+
+export async function getCurrentUser(): Promise<User> {
+  const response = await api.get<User>('/me');
   return response;
 }
