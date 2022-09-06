@@ -8,13 +8,14 @@ import styles from './Card.module.scss';
 export interface CardProps {
   title?: string;
   loading?: boolean;
+  className?: string;
 }
 
-const Card = ({ title, loading, children }: PropsWithChildren<CardProps>) => (
-  <Paper className={styles.card}>
+const Card = ({ title, loading, children, className }: PropsWithChildren<CardProps>) => (
+  <Paper className={`${styles.card} ${className ?? ''}`}>
     {title && <Title>{title}</Title>}
     <Container className={`${styles.cardContent} ${loading ? styles.loading : ''}`}>
-      <Spinner size="large" spinning={loading} />
+      <Spinner size="large" spinning={!!loading} />
       {!loading && children}
     </Container>
   </Paper>

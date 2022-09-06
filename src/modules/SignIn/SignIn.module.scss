@@ -1,0 +1,31 @@
+@import 'styles/variables';
+
+.wrapper {
+  max-width: $screen-width-sm;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.icon {
+  margin-bottom: $spacing;
+  background-color: $primary-main-color;
+}
+
+.form {
+  margin-top: $spacing;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.submitButton {
+  margin-top: 3 * $spacing;
+  margin-bottom: 2 * $spacing;
+}
