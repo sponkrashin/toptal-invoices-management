@@ -1,10 +1,10 @@
-import { ClientCompanyDetails } from './clientCompanyDetails';
+import { CompanyDetails } from './companyDetails';
 
 export interface Client {
   id: string;
   email: string;
   name: string;
-  companyDetails: ClientCompanyDetails;
+  companyDetails: CompanyDetails;
   totalBilled?: number;
   invoicesCount?: number;
 }

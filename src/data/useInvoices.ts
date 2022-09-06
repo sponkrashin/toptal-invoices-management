@@ -1,24 +1,15 @@
-import { useEffect } from 'react';
-import useSWR from 'swr';
+import { useCallback } from 'react';
 import * as apiService from 'data/apiService';
-import { revalidationObjectFactory } from './dataHelpers';
 import { Invoice } from './invoice';
-
-const revalidationObject = revalidationObjectFactory();
-
-export const revalidateInvoices = revalidationObject.revalidate;
+import { useFetch } from './useFetch';
 
 export function useInvoices(): { data: Invoice[]; isLoading: boolean; error: any } {
-  const { data, isValidating, error, mutate } = useSWR('invoices', () => apiService.getInvoices());
-
-  useEffect(() => {
-    revalidationObject.addFunction(mutate);
-    return () => revalidationObject.removeFunction(mutate);
-  }, [mutate]);
+  const fetcher = useCallback(() => apiService.getInvoices(), []);
+  const { isLoading, data, error } = useFetch('invoices', fetcher, true);
 
   return {
     data: data ?? [],
-    isLoading: isValidating,
+    isLoading,
     error,
   };
 }
