@@ -26,7 +26,7 @@ const Header = ({ onToggleDrawer }: HeaderProps) => {
 
   useEffect(() => {
     if (userData) {
-      dispatch(signIn(userData.name));
+      dispatch(signIn(userData.name, userData.token));
     }
   }, [userData, dispatch]);
 
