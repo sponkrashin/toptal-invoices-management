@@ -1,9 +1,12 @@
 import AuthGuard from 'guards/AuthGuard';
+import UserCompanyGuard from 'guards/UserCompanyGuard';
 import Invoices from './Invoices';
 
 const InvoicesWithGuard = () => (
   <AuthGuard>
-    <Invoices />
+    <UserCompanyGuard>
+      <Invoices />
+    </UserCompanyGuard>
   </AuthGuard>
 );
 

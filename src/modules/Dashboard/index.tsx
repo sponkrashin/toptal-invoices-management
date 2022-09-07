@@ -1,9 +1,12 @@
 import AuthGuard from 'guards/AuthGuard';
+import UserCompanyGuard from 'guards/UserCompanyGuard';
 import Dashboard from './Dashboard';
 
 const DashboardWithGuard = () => (
   <AuthGuard>
-    <Dashboard />
+    <UserCompanyGuard>
+      <Dashboard />
+    </UserCompanyGuard>
   </AuthGuard>
 );
 

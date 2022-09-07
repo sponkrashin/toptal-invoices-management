@@ -1,10 +1,13 @@
 import AuthGuard from 'guards/AuthGuard';
+import UserCompanyGuard from 'guards/UserCompanyGuard';
 import Clients from './Clients';
 
-const ClientsWithGuard = () => (
+const ClientsWithGuards = () => (
   <AuthGuard>
-    <Clients />
+    <UserCompanyGuard>
+      <Clients />
+    </UserCompanyGuard>
   </AuthGuard>
 );
 
-export default ClientsWithGuard;
+export default ClientsWithGuards;

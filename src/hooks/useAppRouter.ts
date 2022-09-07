@@ -9,6 +9,7 @@ export const SIGN_UP_URL = '/sign-up';
 export enum NavigationTarget {
   Dashboard = 'Dashboard',
   SignIn = 'SignIn',
+  CompanyDetails = 'CompanyDetails',
 }
 
 function navigate(router: NextRouter, target: NavigationTarget): Promise<boolean> {
