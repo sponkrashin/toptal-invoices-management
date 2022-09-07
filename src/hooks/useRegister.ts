@@ -6,6 +6,7 @@ import { useAsync } from './useAsync';
 
 export function useRegister(): {
   isLoading: boolean;
+  isSuccess: boolean;
   error: HttpError | null;
   execute: (model: RegisterRequest) => void;
 } {
@@ -21,6 +22,7 @@ export function useRegister(): {
 
   return {
     isLoading: status === 'pending',
+    isSuccess: status === 'success',
     error,
     execute,
   };
