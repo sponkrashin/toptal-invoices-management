@@ -30,13 +30,12 @@ const defaultFormValues: FormInput = {
   password: '',
 };
 
-const INVALID_CREDENTIALS_ERROR = 'Email or password is incorrect';
 const GENERIC_ERROR = 'Something unusual happened. Please, try again later';
 
 const SignIn = () => {
   const dispatch = useDispatch();
 
-  const { isLoading: userDataLoading, data: userData, error: userDataError, execute: login } = useLogin();
+  const { isLoading, data, error, execute: login } = useLogin();
 
   const {
     register,
@@ -45,17 +44,17 @@ const SignIn = () => {
   } = useForm({ defaultValues: defaultFormValues, resolver: zodResolver(formSchema) });
 
   useEffect(() => {
-    if (userData) {
-      dispatch(signIn(userData.name, userData.token));
+    if (data) {
+      dispatch(signIn(data.name, data.token));
     }
-  }, [userData, dispatch]);
+  }, [data, dispatch]);
 
   const handleFormSubmit = (data: FormInput) => {
-    if (userDataLoading || !data.email || !data.password) {
+    if (isLoading) {
       return;
     }
 
-    login(data.email, data.password);
+    login({ email: data.email, password: data.password });
   };
 
   return (
@@ -72,6 +71,7 @@ const SignIn = () => {
           margin="normal"
           fullWidth
           autoComplete="email"
+          label="Email"
           error={!!errors.email}
           data-test="email"
         />
@@ -84,6 +84,7 @@ const SignIn = () => {
           {...register('password')}
           margin="normal"
           fullWidth
+          label="Password"
           type="password"
           autoComplete="password"
           error={!!errors.password}
@@ -94,9 +95,9 @@ const SignIn = () => {
             {errors.password.message}
           </FormHelperText>
         )}
-        {userDataError && (
+        {error && (
           <FormHelperText error data-test="form-error">
-            {userDataError.isBadRequest() ? INVALID_CREDENTIALS_ERROR : GENERIC_ERROR}
+            {error.isBadRequest() ? error.message : GENERIC_ERROR}
           </FormHelperText>
         )}
         <Button
@@ -104,10 +105,10 @@ const SignIn = () => {
           type="submit"
           fullWidth
           variant="contained"
-          disabled={userDataLoading}
+          disabled={isLoading}
           data-test="submit-login"
         >
-          <Spinner size="large" spinning={userDataLoading} inContainer />
+          <Spinner size="large" spinning={isLoading} inContainer />
           Sign In
         </Button>
       </form>

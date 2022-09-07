@@ -33,7 +33,6 @@ const App = (props: AppProps) => (
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <AppWrapper {...props} />
-          <div id="modal-root"></div>
           <Notifications />
         </ThemeProvider>
       </AppStateInitiailizer>
