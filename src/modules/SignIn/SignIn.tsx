@@ -9,8 +9,8 @@ import Link from 'components/Link';
 import Spinner from 'components/Spinner';
 import { SIGN_UP_URL } from 'hooks/useAppRouter';
 import { useLogin } from 'hooks/useLogin';
-import { signIn } from 'store/authSlice';
 import { useDispatch } from 'store/hooks';
+import { signIn } from 'store/userInfoSlice';
 import styles from './SignIn.module.scss';
 
 interface FormInput {

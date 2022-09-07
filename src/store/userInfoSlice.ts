@@ -4,34 +4,34 @@ import { HttpError } from 'data/httpError';
 import * as authTokenStorage from 'services/authTokenStorage';
 import type { AppState, AppThunk } from './rootStore';
 
-export interface AuthState {
+export interface UserInfoState {
   userName: string | null;
   isLoggedIn: boolean | null;
 }
 
-const initialState: AuthState = {
+const initialState: UserInfoState = {
   userName: null,
   isLoggedIn: null,
 };
 
-export const authSlice = createSlice({
-  name: 'auth',
+export const userInfoSlice = createSlice({
+  name: 'userInfo',
   initialState,
   reducers: {
     signInInternal: (state, action: PayloadAction<string>) => {
       state.userName = action.payload;
       state.isLoggedIn = true;
     },
-    signOutInternal: (state: AuthState) => {
+    signOutInternal: (state: UserInfoState) => {
       state.userName = null;
       state.isLoggedIn = false;
     },
   },
 });
 
-const { signInInternal, signOutInternal } = authSlice.actions;
+const { signInInternal, signOutInternal } = userInfoSlice.actions;
 
-export const initializeAuth = (): AppThunk => async (dispatch) => {
+export const initializeUserInfo = (): AppThunk => async (dispatch) => {
   try {
     const currentUser = await apiService.getCurrentUser();
     dispatch(signInInternal(currentUser.name));
@@ -54,5 +54,5 @@ export const signOut = (): AppThunk => (dispatch) => {
   dispatch(signOutInternal());
 };
 
-export const selectUserName = (state: AppState) => state.auth.userName;
-export const selectUserIsLoggedIn = (state: AppState) => state.auth.isLoggedIn;
+export const selectUserName = (state: AppState) => state.userInfo.userName;
+export const selectUserIsLoggedIn = (state: AppState) => state.userInfo.isLoggedIn;

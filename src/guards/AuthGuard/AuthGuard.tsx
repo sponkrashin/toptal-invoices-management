@@ -1,7 +1,7 @@
 import { PropsWithChildren, useEffect } from 'react';
 import { NavigationTarget, useAppRouter } from 'hooks/useAppRouter';
-import { selectUserIsLoggedIn } from 'store/authSlice';
 import { useSelector } from 'store/hooks';
+import { selectUserIsLoggedIn } from 'store/userInfoSlice';
 
 const AuthGuard = ({ children }: PropsWithChildren) => {
   const { navigate } = useAppRouter();

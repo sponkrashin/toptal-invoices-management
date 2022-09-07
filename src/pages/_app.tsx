@@ -8,16 +8,16 @@ import { ThemeProvider } from '@mui/material/styles';
 import { Provider } from 'react-redux';
 import AppWrapper from 'components/AppWrapper';
 import Notifications from 'components/Notifications';
-import { initializeAuth } from 'store/authSlice';
 import { useDispatch } from 'store/hooks';
 import { store } from 'store/rootStore';
+import { initializeUserInfo } from 'store/userInfoSlice';
 import { theme } from 'theme/theme';
 
 const AppStateInitiailizer = ({ children }: PropsWithChildren) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(initializeAuth());
+    dispatch(initializeUserInfo());
   }, [dispatch]);
 
   return <>{children}</>;
