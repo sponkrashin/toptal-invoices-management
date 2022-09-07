@@ -9,14 +9,14 @@ export function useLogin(): {
   data: LoginResponse | null;
   isLoading: boolean;
   error: HttpError | null;
-  execute: (email: string, password: string) => void;
+  execute: (model: LoginRequest) => void;
 } {
-  const fetcher = useCallback((email: string, password: string) => apiService.login({ email, password }), []);
+  const fetcher = useCallback((model: LoginRequest) => apiService.login(model), []);
   const { value, status, error, execute: executeAsync } = useAsync<LoginResponse, HttpError>(fetcher, false);
 
   const execute = useCallback(
-    (email: string, password: string) => {
-      executeAsync(email, password);
+    (model: LoginRequest) => {
+      executeAsync(model);
     },
     [executeAsync]
   );
