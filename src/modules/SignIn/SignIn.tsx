@@ -73,8 +73,13 @@ const SignIn = () => {
           fullWidth
           autoComplete="email"
           error={!!errors.email}
-          helperText={errors.email?.message}
+          data-test="email"
         />
+        {errors.email && (
+          <FormHelperText error data-test="email-error">
+            {errors.email.message}
+          </FormHelperText>
+        )}
         <TextField
           {...register('password')}
           margin="normal"
@@ -82,14 +87,26 @@ const SignIn = () => {
           type="password"
           autoComplete="password"
           error={!!errors.password}
-          helperText={errors.password?.message}
+          data-test="password"
         />
+        {errors.password && (
+          <FormHelperText error data-test="password-error">
+            {errors.password.message}
+          </FormHelperText>
+        )}
         {userDataError && (
-          <FormHelperText error>
+          <FormHelperText error data-test="form-error">
             {userDataError.isBadRequest() ? INVALID_CREDENTIALS_ERROR : GENERIC_ERROR}
           </FormHelperText>
         )}
-        <Button className={styles.submitButton} type="submit" fullWidth variant="contained" disabled={userDataLoading}>
+        <Button
+          className={styles.submitButton}
+          type="submit"
+          fullWidth
+          variant="contained"
+          disabled={userDataLoading}
+          data-test="submit-login"
+        >
           <Spinner size="large" spinning={userDataLoading} inContainer />
           Sign In
         </Button>

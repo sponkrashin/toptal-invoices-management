@@ -11,7 +11,7 @@ function navigate(router: NextRouter, target: NavigationTarget): Promise<boolean
       return router.push('/');
 
     case NavigationTarget.SignIn:
-      return router.push('/sign-in');
+      return router.push('/login');
 
     default:
       throw new Error(`Navigation target ${target} is not supported yet`);
