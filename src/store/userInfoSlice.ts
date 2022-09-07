@@ -31,10 +31,14 @@ export const userInfoSlice = createSlice({
       state.companyDetails = null;
       state.isLoggedIn = false;
     },
+    updateCompanyDetails: (state, action: PayloadAction<CompanyDetails>) => {
+      state.companyDetails = action.payload;
+    },
   },
 });
 
 const { signInInternal, signOutInternal } = userInfoSlice.actions;
+export const { updateCompanyDetails } = userInfoSlice.actions;
 
 export const initializeUserInfo = (): AppThunk => async (dispatch) => {
   try {
