@@ -5,6 +5,7 @@ import { Invoice } from './invoice';
 import { InvoiceResponse } from './invoiceResponse';
 import { LoginRequest } from './loginRequest';
 import { LoginResponse } from './loginResponse';
+import { RegisterRequest } from './registerRequest';
 import { User } from './user';
 
 async function baseApiCall<T = any>(relativeUrl: string, includeAuthToken: boolean, options?: RequestInit): Promise<T> {
@@ -71,4 +72,8 @@ export async function login(model: LoginRequest): Promise<LoginResponse> {
 export async function getCurrentUser(): Promise<User> {
   const response = await api.get<User>('/me');
   return response;
+}
+
+export async function register(model: RegisterRequest): Promise<void> {
+  await api.post<RegisterRequest>('/register', model, false);
 }
