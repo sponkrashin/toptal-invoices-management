@@ -7,6 +7,7 @@ import * as zod from 'zod';
 import Card from 'components/Card';
 import Link from 'components/Link';
 import Spinner from 'components/Spinner';
+import { SIGN_UP_URL } from 'hooks/useAppRouter';
 import { useLogin } from 'hooks/useLogin';
 import { signIn } from 'store/authSlice';
 import { useDispatch } from 'store/hooks';
@@ -114,7 +115,7 @@ const SignIn = () => {
       </form>
       <Grid container justifyContent="flex-end">
         <Grid item>
-          <Link href="/sign-up" type="link">
+          <Link href={SIGN_UP_URL} type="link">
             Don't have an account? Sign up
           </Link>
         </Grid>

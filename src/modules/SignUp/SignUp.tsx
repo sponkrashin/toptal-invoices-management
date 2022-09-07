@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { Avatar, Button, Grid, Link, TextField, Typography, FormHelperText } from '@mui/material';
@@ -5,12 +6,11 @@ import { useForm } from 'react-hook-form';
 import * as zod from 'zod';
 import Card from 'components/Card';
 import Spinner from 'components/Spinner';
+import { NavigationTarget, SIGN_IN_URL, useAppRouter } from 'hooks/useAppRouter';
 import { useRegister } from 'hooks/useRegister';
 import { useDispatch } from 'store/hooks';
 import { showNotification } from 'store/notificationsSlice';
 import styles from './SignUp.module.scss';
-import { useEffect } from 'react';
-import { NavigationTarget, useAppRouter } from 'hooks/useAppRouter';
 
 interface FormInput {
   name: string;
@@ -161,7 +161,7 @@ const SignUp = () => {
       </form>
       <Grid container justifyContent="flex-end">
         <Grid item>
-          <Link href="/sign-in" type="link">
+          <Link href={SIGN_IN_URL} type="link">
             Already have an account? Sign in
           </Link>
         </Grid>
