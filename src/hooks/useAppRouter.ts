@@ -3,12 +3,14 @@ import { NextRouter, useRouter } from 'next/router';
 export const DASHBOARD_URL = '/';
 export const CLIENTS_URL = '/clients';
 export const INVOICES_URL = '/invoices';
+export const COMPANY_DETAILS_URL = '/company-details';
 export const SIGN_IN_URL = '/login';
 export const SIGN_UP_URL = '/sign-up';
 
 export enum NavigationTarget {
   Dashboard = 'Dashboard',
   SignIn = 'SignIn',
+  CompanyDetails = 'CompanyDetails',
 }
 
 function navigate(router: NextRouter, target: NavigationTarget): Promise<boolean> {
@@ -18,6 +20,9 @@ function navigate(router: NextRouter, target: NavigationTarget): Promise<boolean
 
     case NavigationTarget.SignIn:
       return router.push(SIGN_IN_URL);
+
+    case NavigationTarget.CompanyDetails:
+      return router.push(COMPANY_DETAILS_URL);
 
     default:
       throw new Error(`Navigation target ${target} is not supported yet`);

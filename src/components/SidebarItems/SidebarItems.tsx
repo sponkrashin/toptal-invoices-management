@@ -4,7 +4,7 @@ import BarChartIcon from '@mui/icons-material/BarChart';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import PeopleIcon from '@mui/icons-material/People';
 import { List, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
-import { CLIENTS_URL, DASHBOARD_URL, INVOICES_URL } from 'hooks/useAppRouter';
+import { CLIENTS_URL, COMPANY_DETAILS_URL, DASHBOARD_URL, INVOICES_URL } from 'hooks/useAppRouter';
 
 const SidebarItems = () => {
   const { pathname: currentPath } = useRouter();
@@ -12,6 +12,7 @@ const SidebarItems = () => {
   const isDashboardActive = currentPath === DASHBOARD_URL;
   const isInvoicesActive = currentPath === INVOICES_URL;
   const isClientsActive = currentPath === CLIENTS_URL;
+  const isCompanyDetailsActive = currentPath === COMPANY_DETAILS_URL;
 
   return (
     <List component="nav">
@@ -37,6 +38,14 @@ const SidebarItems = () => {
             <PeopleIcon />
           </ListItemIcon>
           <ListItemText primary="Clients" />
+        </ListItemButton>
+      </Link>
+      <Link href={COMPANY_DETAILS_URL}>
+        <ListItemButton selected={isCompanyDetailsActive}>
+          <ListItemIcon>
+            <PeopleIcon />
+          </ListItemIcon>
+          <ListItemText primary="Company Details" />
         </ListItemButton>
       </Link>
     </List>

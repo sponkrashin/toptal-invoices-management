@@ -1,11 +1,11 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import { authSlice } from './authSlice';
 import { notificationsSlice } from './notificationsSlice';
+import { userInfoSlice } from './userInfoSlice';
 
 export function makeStore() {
   return configureStore({
     reducer: {
-      auth: authSlice.reducer,
+      userInfo: userInfoSlice.reducer,
       notifications: notificationsSlice.reducer,
     },
   });

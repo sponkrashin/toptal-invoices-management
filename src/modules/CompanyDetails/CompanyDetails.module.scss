@@ -1,0 +1,30 @@
+@import 'styles/variables';
+
+.card {
+  max-width: $screen-width-sm;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.successMessage {
+  color: #4caf50;
+}
+
+.form {
+  margin-top: $spacing;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.submitButton {
+  margin-top: 3 * $spacing;
+  margin-bottom: 2 * $spacing;
+  position: relative;
+}

@@ -153,7 +153,7 @@ const SignUp = () => {
           fullWidth
           variant="contained"
           disabled={isLoading}
-          data-test="submit-login"
+          data-test="submit-sign-up"
         >
           <Spinner size="large" spinning={isLoading} inContainer />
           Sign Up
