@@ -26,8 +26,15 @@ async function baseApiCall<T = any>(relativeUrl: string, includeAuthToken: boole
   };
 
   const response = await fetch(`${baseUrl}${relativeUrl}`, { ...options, headers });
+
   if (!response.ok) {
-    throw new HttpError(response.statusText, response.status);
+    let errorMessage: string | null = null;
+
+    try {
+      errorMessage = await response.text();
+    } catch {}
+
+    throw new HttpError(errorMessage ?? response.statusText, response.status);
   }
 
   return (await response.json()) as T;
