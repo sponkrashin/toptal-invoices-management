@@ -46,7 +46,7 @@ const SignIn = () => {
 
   useEffect(() => {
     if (data) {
-      dispatch(signIn(data.name, data.token));
+      dispatch(signIn(data.name, data.companyDetails, data.token));
     }
   }, [data, dispatch]);
 
