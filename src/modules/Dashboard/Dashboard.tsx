@@ -2,8 +2,10 @@ import keyBy from 'lodash/keyBy';
 import Card from 'components/Card';
 import ClientsTable from 'components/ClientsTable';
 import InvoicesTable from 'components/InvoicesTable';
+import Spinner from 'components/Spinner';
 import { useClients } from 'data/useClients';
 import { useInvoices } from 'data/useInvoices';
+import styles from './Dashboard.module.scss';
 
 const Dashboard = () => {
   const { data: clients, isLoading: clientsLoading } = useClients();
@@ -19,11 +21,17 @@ const Dashboard = () => {
 
   return (
     <>
-      <Card title="Clients" loading={clientsLoading}>
-        <ClientsTable data={filteredClients} onRowClick={(row) => console.log('From dashboard', row)} />
+      <Card title="Clients" contentClassName={`${clientsLoading ? styles.cardContentWithLoading : ''}`}>
+        <Spinner size="large" spinning={clientsLoading} />
+        {!clientsLoading && (
+          <ClientsTable data={filteredClients} onRowClick={(row) => console.log('From dashboard', row)} />
+        )}
       </Card>
-      <Card title="Invoices" loading={invoicesLoading}>
-        <InvoicesTable data={filteredInvoices} onRowClick={(row) => console.log('From dashboard', row)} />
+      <Card title="Invoices" contentClassName={`${invoicesLoading ? styles.cardContentWithLoading : ''}`}>
+        <Spinner size="large" spinning={invoicesLoading} />
+        {!invoicesLoading && (
+          <InvoicesTable data={filteredInvoices} onRowClick={(row) => console.log('From dashboard', row)} />
+        )}
       </Card>
     </>
   );

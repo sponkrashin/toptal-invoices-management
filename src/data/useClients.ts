@@ -1,15 +1,16 @@
 import { useCallback } from 'react';
 import * as apiService from 'data/apiService';
 import { Client } from './client';
-import { useFetch } from './useFetch';
+import { HttpError } from './httpError';
+import { useAsync } from './useAsync';
 
-export function useClients(): { data: Client[]; isLoading: boolean; error: any } {
+export function useClients(): { data: Client[]; isLoading: boolean; error: HttpError | null } {
   const fetcher = useCallback(() => apiService.getClients(), []);
-  const { isLoading, data, error } = useFetch('clients', fetcher, true);
+  const { status, value, error } = useAsync<Client[], HttpError>(fetcher, true);
 
   return {
-    data: data ?? [],
-    isLoading,
+    data: value ?? [],
+    isLoading: status === 'pending',
     error,
   };
 }

@@ -1,24 +1,43 @@
+import * as authTokenStorage from 'services/authTokenStorage';
 import { Client } from './client';
+import { HttpError } from './httpError';
 import { Invoice } from './invoice';
 import { InvoiceResponse } from './invoiceResponse';
+import { LoginRequest } from './loginRequest';
+import { LoginResponse } from './loginResponse';
+import { User } from './user';
 
-async function baseApiCall<T = any>(relativeUrl: string, options?: RequestInit): Promise<T> {
+async function baseApiCall<T = any>(relativeUrl: string, includeAuthToken: boolean, options?: RequestInit): Promise<T> {
   const baseUrl = process.env.NEXT_PUBLIC_BACKEND_API;
-  const authToken = '555';
+  const authToken = authTokenStorage.getAuthToken();
+
+  const authHeaders =
+    includeAuthToken && authToken
+      ? {
+          'x-access-token': authToken,
+        }
+      : undefined;
 
   const headers = {
     ...options?.headers,
-    'x-access-token': authToken,
+    ...authHeaders,
     'Content-Type': 'application/json',
   };
 
   const response = await fetch(`${baseUrl}${relativeUrl}`, { ...options, headers });
+  if (!response.ok) {
+    throw new HttpError(response.statusText, response.status);
+  }
+
   return (await response.json()) as T;
 }
 
 const api = {
   get: function <T = any>(relativeUrl: string) {
-    return baseApiCall<T>(relativeUrl, { method: 'GET' });
+    return baseApiCall<T>(relativeUrl, true, { method: 'GET' });
+  },
+  post: function <T = any>(relativeUrl: string, body: any, includeAuthToken: boolean = true) {
+    return baseApiCall<T>(relativeUrl, includeAuthToken, { method: 'POST', body: JSON.stringify(body) });
   },
 };
 
@@ -42,4 +61,14 @@ export async function getInvoices(): Promise<Invoice[]> {
         client: inv.client,
       } as Invoice)
   );
+}
+
+export async function login(model: LoginRequest): Promise<LoginResponse> {
+  const response = await api.post<LoginResponse>('/login', model, false);
+  return response;
+}
+
+export async function getCurrentUser(): Promise<User> {
+  const response = await api.get<User>('/me');
+  return response;
 }

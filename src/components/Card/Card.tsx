@@ -1,22 +1,19 @@
 import { PropsWithChildren } from 'react';
 import { Paper } from '@mui/material';
 import { Container } from '@mui/system';
-import Spinner from 'components/Spinner';
 import Title from 'components/Title';
 import styles from './Card.module.scss';
 
 export interface CardProps {
   title?: string;
-  loading?: boolean;
+  className?: string;
+  contentClassName?: string;
 }
 
-const Card = ({ title, loading, children }: PropsWithChildren<CardProps>) => (
-  <Paper className={styles.card}>
+const Card = ({ title, children, className, contentClassName }: PropsWithChildren<CardProps>) => (
+  <Paper className={`${styles.card} ${className ?? ''}`}>
     {title && <Title>{title}</Title>}
-    <Container className={`${styles.cardContent} ${loading ? styles.loading : ''}`}>
-      <Spinner size="large" spinning={loading} />
-      {!loading && children}
-    </Container>
+    <Container className={`${styles.cardContent} ${contentClassName ?? ''}`}>{children}</Container>
   </Paper>
 );
 

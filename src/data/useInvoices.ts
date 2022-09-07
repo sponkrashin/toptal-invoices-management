@@ -1,15 +1,16 @@
 import { useCallback } from 'react';
 import * as apiService from 'data/apiService';
+import { HttpError } from './httpError';
 import { Invoice } from './invoice';
-import { useFetch } from './useFetch';
+import { useAsync } from './useAsync';
 
-export function useInvoices(): { data: Invoice[]; isLoading: boolean; error: any } {
+export function useInvoices(): { data: Invoice[]; isLoading: boolean; error: HttpError | null } {
   const fetcher = useCallback(() => apiService.getInvoices(), []);
-  const { isLoading, data, error } = useFetch('invoices', fetcher, true);
+  const { status, value, error } = useAsync<Invoice[], HttpError>(fetcher, true);
 
   return {
-    data: data ?? [],
-    isLoading,
+    data: value ?? [],
+    isLoading: status === 'pending',
     error,
   };
 }

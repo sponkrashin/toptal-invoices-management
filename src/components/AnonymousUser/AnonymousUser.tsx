@@ -1,35 +1,19 @@
-import PropTypes from 'prop-types';
-import Link from 'next/link';
-import { Button, Typography } from '@mui/material';
-import styles from './AnonymousUser.module.scss';
+import { Typography } from '@mui/material';
+import Link from 'components/Link';
 
-export interface AnonymousUserProps {
-  onSignIn: Function;
-}
-
-const AnonymousUser = ({ onSignIn }: AnonymousUserProps) => {
-  const signInHandler = () => onSignIn('Test User');
-
-  return (
-    <>
-      <Button color="inherit" onClick={signInHandler}>
-        <Typography className={styles.signInContainer} component="h1" variant="h6">
-          Sign In
-        </Typography>
-      </Button>
-      <Link href="/sign-up">
-        <Button color="inherit">
-          <Typography component="h1" variant="h6">
-            Sign Up
-          </Typography>
-        </Button>
-      </Link>
-    </>
-  );
-};
-
-AnonymousUser.propTypes = {
-  onSignIn: PropTypes.func.isRequired,
-};
+const AnonymousUser = () => (
+  <>
+    <Link href="/sign-in" type="button">
+      <Typography component="h1" variant="h6">
+        Sign In
+      </Typography>
+    </Link>
+    <Link href="/sign-up" type="button">
+      <Typography component="h1" variant="h6">
+        Sign Up
+      </Typography>
+    </Link>
+  </>
+);
 
 export default AnonymousUser;
