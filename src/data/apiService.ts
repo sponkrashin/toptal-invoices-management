@@ -1,11 +1,13 @@
 import * as authTokenStorage from 'services/authTokenStorage';
 import { Client } from './client';
+import { CompanyDetails } from './companyDetails';
 import { HttpError } from './httpError';
 import { Invoice } from './invoice';
 import { InvoiceResponse } from './invoiceResponse';
 import { LoginRequest } from './loginRequest';
 import { LoginResponse } from './loginResponse';
 import { RegisterRequest } from './registerRequest';
+import { UpdateCompanyDetailsResponse } from './updateCompanyDetailsResponse';
 import { User } from './user';
 
 async function baseApiCall<T = any>(relativeUrl: string, includeAuthToken: boolean, options?: RequestInit): Promise<T> {
@@ -47,6 +49,9 @@ const api = {
   post: function <T = any>(relativeUrl: string, body: any, includeAuthToken: boolean = true) {
     return baseApiCall<T>(relativeUrl, includeAuthToken, { method: 'POST', body: JSON.stringify(body) });
   },
+  put: function <T = any>(relativeUrl: string, body: any, includeAuthToken: boolean = true) {
+    return baseApiCall<T>(relativeUrl, includeAuthToken, { method: 'PUT', body: JSON.stringify(body) });
+  },
 };
 
 export async function getClients(): Promise<Client[]> {
@@ -82,5 +87,10 @@ export async function getCurrentUser(): Promise<User> {
 }
 
 export async function register(model: RegisterRequest): Promise<void> {
-  await api.post<RegisterRequest>('/register', model, false);
+  await api.post('/register', model, false);
+}
+
+export async function updateCompanyDetails(model: CompanyDetails): Promise<User> {
+  const response = await api.put<UpdateCompanyDetailsResponse>('/me/company', model);
+  return response.user;
 }
