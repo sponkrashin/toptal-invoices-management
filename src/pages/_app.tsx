@@ -7,6 +7,7 @@ import { CssBaseline } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
 import { Provider } from 'react-redux';
 import AppWrapper from 'components/AppWrapper';
+import Notifications from 'components/Notifications';
 import { initializeAuth } from 'store/authSlice';
 import { useDispatch } from 'store/hooks';
 import { store } from 'store/rootStore';
@@ -32,7 +33,7 @@ const App = (props: AppProps) => (
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <AppWrapper {...props} />
-          <div id="modal-root"></div>
+          <Notifications />
         </ThemeProvider>
       </AppStateInitiailizer>
     </Provider>

@@ -5,6 +5,7 @@ import { Invoice } from './invoice';
 import { InvoiceResponse } from './invoiceResponse';
 import { LoginRequest } from './loginRequest';
 import { LoginResponse } from './loginResponse';
+import { RegisterRequest } from './registerRequest';
 import { User } from './user';
 
 async function baseApiCall<T = any>(relativeUrl: string, includeAuthToken: boolean, options?: RequestInit): Promise<T> {
@@ -25,8 +26,15 @@ async function baseApiCall<T = any>(relativeUrl: string, includeAuthToken: boole
   };
 
   const response = await fetch(`${baseUrl}${relativeUrl}`, { ...options, headers });
+
   if (!response.ok) {
-    throw new HttpError(response.statusText, response.status);
+    let errorMessage: string | null = null;
+
+    try {
+      errorMessage = await response.text();
+    } catch {}
+
+    throw new HttpError(errorMessage ?? response.statusText, response.status);
   }
 
   return (await response.json()) as T;
@@ -71,4 +79,8 @@ export async function login(model: LoginRequest): Promise<LoginResponse> {
 export async function getCurrentUser(): Promise<User> {
   const response = await api.get<User>('/me');
   return response;
+}
+
+export async function register(model: RegisterRequest): Promise<void> {
+  await api.post<RegisterRequest>('/register', model, false);
 }

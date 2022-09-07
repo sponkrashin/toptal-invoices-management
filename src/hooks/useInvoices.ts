@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import * as apiService from 'data/apiService';
-import { HttpError } from './httpError';
-import { Invoice } from './invoice';
+import { HttpError } from 'data/httpError';
+import { Invoice } from 'data/invoice';
 import { useAsync } from './useAsync';
 
 export function useInvoices(): { data: Invoice[]; isLoading: boolean; error: HttpError | null } {
