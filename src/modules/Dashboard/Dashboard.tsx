@@ -3,8 +3,8 @@ import Card from 'components/Card';
 import ClientsTable from 'components/ClientsTable';
 import InvoicesTable from 'components/InvoicesTable';
 import Spinner from 'components/Spinner';
-import { useClients } from 'data/useClients';
-import { useInvoices } from 'data/useInvoices';
+import { useClients } from 'hooks/useClients';
+import { useInvoices } from 'hooks/useInvoices';
 import styles from './Dashboard.module.scss';
 
 const Dashboard = () => {

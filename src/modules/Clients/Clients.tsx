@@ -1,7 +1,7 @@
 import Card from 'components/Card';
 import ClientsTable from 'components/ClientsTable';
 import Spinner from 'components/Spinner';
-import { useClients } from 'data/useClients';
+import { useClients } from 'hooks/useClients';
 import styles from './Clients.module.scss';
 
 const Clients = () => {

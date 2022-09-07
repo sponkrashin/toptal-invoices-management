@@ -1,7 +1,8 @@
 import { useCallback } from 'react';
 import * as apiService from 'data/apiService';
-import { HttpError } from './httpError';
-import { LoginResponse } from './loginResponse';
+import { HttpError } from 'data/httpError';
+import { LoginRequest } from 'data/loginRequest';
+import { LoginResponse } from 'data/loginResponse';
 import { useAsync } from './useAsync';
 
 export function useLogin(): {

@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import * as apiService from 'data/apiService';
-import { Client } from './client';
-import { HttpError } from './httpError';
+import { Client } from 'data/client';
+import { HttpError } from 'data/httpError';
 import { useAsync } from './useAsync';
 
 export function useClients(): { data: Client[]; isLoading: boolean; error: HttpError | null } {

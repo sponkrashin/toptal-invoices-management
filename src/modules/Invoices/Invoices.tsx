@@ -1,7 +1,7 @@
 import Card from 'components/Card';
 import InvoicesTable from 'components/InvoicesTable';
 import Spinner from 'components/Spinner';
-import { useInvoices } from 'data/useInvoices';
+import { useInvoices } from 'hooks/useInvoices';
 import styles from './Invoices.module.scss';
 
 const Invoices = () => {

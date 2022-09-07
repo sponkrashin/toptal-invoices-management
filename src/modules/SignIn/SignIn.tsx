@@ -7,7 +7,7 @@ import * as zod from 'zod';
 import Card from 'components/Card';
 import Link from 'components/Link';
 import Spinner from 'components/Spinner';
-import { useLogin } from 'data/useLogin';
+import { useLogin } from 'hooks/useLogin';
 import { signIn } from 'store/authSlice';
 import { useDispatch } from 'store/hooks';
 import styles from './SignIn.module.scss';
