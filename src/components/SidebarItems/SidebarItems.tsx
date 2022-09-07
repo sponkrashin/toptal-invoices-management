@@ -4,17 +4,18 @@ import BarChartIcon from '@mui/icons-material/BarChart';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import PeopleIcon from '@mui/icons-material/People';
 import { List, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
+import { CLIENTS_URL, DASHBOARD_URL, INVOICES_URL } from 'hooks/useAppRouter';
 
 const SidebarItems = () => {
   const { pathname: currentPath } = useRouter();
 
-  const isDashboardActive = currentPath === '/';
-  const isInvoicesActive = currentPath === '/invoices';
-  const isClientsActive = currentPath === '/clients';
+  const isDashboardActive = currentPath === DASHBOARD_URL;
+  const isInvoicesActive = currentPath === INVOICES_URL;
+  const isClientsActive = currentPath === CLIENTS_URL;
 
   return (
     <List component="nav">
-      <Link href="/">
+      <Link href={DASHBOARD_URL}>
         <ListItemButton selected={isDashboardActive}>
           <ListItemIcon>
             <DashboardIcon />
@@ -22,7 +23,7 @@ const SidebarItems = () => {
           <ListItemText primary="Dashboard" />
         </ListItemButton>
       </Link>
-      <Link href="/invoices">
+      <Link href={INVOICES_URL}>
         <ListItemButton selected={isInvoicesActive}>
           <ListItemIcon>
             <BarChartIcon />
@@ -30,7 +31,7 @@ const SidebarItems = () => {
           <ListItemText primary="Invoices" />
         </ListItemButton>
       </Link>
-      <Link href="/clients">
+      <Link href={CLIENTS_URL}>
         <ListItemButton selected={isClientsActive}>
           <ListItemIcon>
             <PeopleIcon />
