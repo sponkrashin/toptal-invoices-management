@@ -1,6 +1,6 @@
 import { AppProps } from 'next/app';
 import { Box, Container, Toolbar } from '@mui/material';
-import HeaderWithSidebarContainer from 'components/HeaderWithSidebarContainer';
+import HeaderWithSidebarContainer from './HeaderWithSidebarContainer';
 import styles from './AppWrapper.module.scss';
 
 const AppWrapper = ({ Component, pageProps }: AppProps) => (

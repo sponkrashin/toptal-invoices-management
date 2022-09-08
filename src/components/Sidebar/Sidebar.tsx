@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { Divider, Drawer } from '@mui/material';
 import Toolbar from '@mui/material/Toolbar';
-import SidebarItems from '../SidebarItems';
+import SidebarItems from './SidebarItems';
 import styles from './Sidebar.module.scss';
 
 export interface SidebarProps {
