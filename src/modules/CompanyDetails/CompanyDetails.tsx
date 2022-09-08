@@ -1,16 +1,15 @@
+import { useEffect } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Button, TextField, Typography, FormHelperText, Alert, Grid } from '@mui/material';
+import { Button, TextField, Typography, FormHelperText, Grid } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import * as zod from 'zod';
 import Card from 'components/Card';
-import { NavigationTarget, useAppRouter } from 'hooks/useAppRouter';
-import { useDispatch, useSelector } from 'store/hooks';
-import styles from './CompanyDetails.module.scss';
-import { useUpdateCompanyDetails } from 'hooks/useUpdateCompanyDetails';
 import Spinner from 'components/Spinner';
-import { useEffect, useState } from 'react';
-import { showNotification } from 'store/notificationsSlice';
+import { NavigationTarget, useAppRouter } from 'hooks/useAppRouter';
+import { useUpdateCompanyDetails } from 'hooks/useUpdateCompanyDetails';
+import { useDispatch, useSelector } from 'store/hooks';
 import { selectUserCompanyDetails, updateCompanyDetails } from 'store/userInfoSlice';
+import styles from './CompanyDetails.module.scss';
 
 interface FormInput {
   companyName: string;

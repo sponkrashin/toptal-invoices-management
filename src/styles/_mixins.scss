@@ -5,6 +5,10 @@
     @media screen and (max-width: calc($screen-width-sm - 1px)) {
       @content;
     }
+  } @else if ($size == '<md') {
+    @media screen and (max-width: calc($screen-width-md - 1px)) {
+      @content;
+    }
   } @else {
     @error "Unknown size #{$size}";
   }

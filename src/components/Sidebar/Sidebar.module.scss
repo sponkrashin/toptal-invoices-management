@@ -1,13 +1,6 @@
 @import 'styles/variables';
 @import 'styles/mixins';
 
-@mixin drawerCollapsed {
-  :global .MuiDrawer-paper {
-    width: $drawer-collapsed-width;
-    transition: $drawer-hide-transition;
-  }
-}
-
 .drawer {
   :global .MuiDrawer-paper {
     position: relative;
@@ -15,13 +8,10 @@
     overflow-x: hidden;
     width: $drawer-expanded-width;
     transition: $drawer-show-transition;
-  }
 
-  &.collapsed {
-    @include drawerCollapsed();
-  }
-
-  @include screen('<sm') {
-    @include drawerCollapsed();
+    @include screen('<md') {
+      width: $drawer-collapsed-width;
+      transition: $drawer-hide-transition;
+    }
   }
 }
