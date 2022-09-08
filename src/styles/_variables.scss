@@ -3,6 +3,7 @@ $spacing: getThemeVariable('spacingValue');
 $primary-main-color: getThemeVariable('palette.primary.main');
 
 $screen-width-sm: getThemeVariable('breakpoints.values.sm') + px;
+$screen-width-md: getThemeVariable('breakpoints.values.md') + px;
 $screen-width-lg: getThemeVariable('breakpoints.values.lg') + px;
 
 $drawer-z-index: getThemeVariable('zIndex.drawer');

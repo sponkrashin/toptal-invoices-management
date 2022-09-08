@@ -12,7 +12,7 @@ const HeaderWithSidebarContainer = () => {
   return (
     <>
       <Header open={open} onToggleDrawer={toggleDrawer} />
-      <Sidebar open={open} />
+      <Sidebar />
     </>
   );
 };
