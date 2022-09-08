@@ -13,6 +13,8 @@ export enum NavigationTarget {
   CompanyDetails = 'CompanyDetails',
 }
 
+const ID_QUERY_PARAM = 'id';
+
 function navigate(router: NextRouter, target: NavigationTarget): Promise<boolean> {
   switch (target) {
     case NavigationTarget.Dashboard:
@@ -29,11 +31,18 @@ function navigate(router: NextRouter, target: NavigationTarget): Promise<boolean
   }
 }
 
-export function useAppRouter(): { router: NextRouter; navigate: (target: NavigationTarget) => Promise<boolean> } {
+export function useAppRouter(): {
+  router: NextRouter;
+  idQueryParam: number | null;
+  navigate: (target: NavigationTarget) => Promise<boolean>;
+} {
   const router = useRouter();
+
+  const idQueryParam = router.query[ID_QUERY_PARAM] ? +router.query[ID_QUERY_PARAM] : null;
 
   return {
     router,
+    idQueryParam,
     navigate: (target) => navigate(router, target),
   };
 }
