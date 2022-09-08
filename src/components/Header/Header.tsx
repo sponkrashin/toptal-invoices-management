@@ -1,8 +1,8 @@
 import { AppBar, Toolbar, Typography } from '@mui/material';
 import { useSelector, useDispatch } from 'store/hooks';
 import { selectUserIsLoggedIn, selectUserName, signOut } from 'store/userInfoSlice';
-import AnonymousUser from '../AnonymousUser';
-import LoggedUser from '../LoggedUser';
+import AnonymousUser from './AnonymousUser';
+import LoggedUser from './LoggedUser';
 import styles from './Header.module.scss';
 
 const Header = () => {
