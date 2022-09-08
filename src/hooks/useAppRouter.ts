@@ -29,7 +29,7 @@ function formatUrl(url: string, params: Record<string, string>): string {
   return result;
 }
 
-function navigate(router: NextRouter, target: NavigationTarget, id?: number): Promise<boolean> {
+function navigate(router: NextRouter, target: NavigationTarget, id?: string): Promise<boolean> {
   switch (target) {
     case NavigationTarget.Dashboard:
       return router.push(DASHBOARD_URL);
@@ -61,12 +61,12 @@ function navigate(router: NextRouter, target: NavigationTarget, id?: number): Pr
 
 export function useAppRouter(): {
   router: NextRouter;
-  idQueryParam: number | null;
-  navigate: (target: NavigationTarget, id?: number) => Promise<boolean>;
+  idQueryParam: string | null;
+  navigate: (target: NavigationTarget, id?: string) => Promise<boolean>;
 } {
   const router = useRouter();
 
-  const idQueryParam = router.query[ID_QUERY_PARAM] ? +router.query[ID_QUERY_PARAM] : null;
+  const idQueryParam = router.query[ID_QUERY_PARAM] ? (router.query[ID_QUERY_PARAM] as string) : null;
 
   return {
     router,
